@@ -5,7 +5,7 @@ import Inflect._
 
 class InflectTest extends FunSuite {
 
-  test("DCONWAY's tests plus some of mine") {
+  test("numeric ordinals") {
     assert(ordinal(0) === "0th")
     assert(ordinal(1) === "1st")
     assert(ordinal(2) === "2nd")
@@ -42,8 +42,42 @@ class InflectTest extends FunSuite {
     assert(ordinal(10004) === "10004th")
   }
 
-  test("Using the th method and implicit conversion") {
+  test("Using the th method and implicit conversion for numeric ordinals") {
     import ImplicitConversions._
     assert(1.th == "1st")
+  }
+
+  test("string ordinal tests") {
+    assert(ordinal("zero") === "zeroth")
+    assert(ordinal("one") === "first")
+    assert(ordinal("two") === "second")
+    assert(ordinal("three") === "third")
+    assert(ordinal("four") === "fourth")
+    assert(ordinal("five") === "fifth")
+    assert(ordinal("six") === "sixth")
+    assert(ordinal("seven") === "seventh")
+    assert(ordinal("eight") === "eighth")
+    assert(ordinal("nine") === "ninth")
+    assert(ordinal("ten") === "tenth")
+    assert(ordinal("eleven") === "eleventh")
+    assert(ordinal("twelve") === "twelfth")
+    assert(ordinal("thirteen") === "thirteenth")
+    assert(ordinal("fourteen") === "fourteenth")
+    assert(ordinal("fifteen") === "fifteenth")
+    assert(ordinal("sixteen") === "sixteenth")
+    assert(ordinal("seventeen") === "seventeenth")
+    assert(ordinal("eighteen") === "eighteenth")
+    assert(ordinal("nineteen") === "nineteenth")
+    assert(ordinal("twenty") === "twentieth")
+    assert(ordinal("twenty-one") === "twenty-first")
+    assert(ordinal("twenty-two") === "twenty-second")
+    assert(ordinal("twenty-three") === "twenty-third")
+    assert(ordinal("twenty-four") === "twenty-fourth")
+    assert(ordinal("sixty") === "sixtieth")
+    assert(ordinal("one hundred") === "one hundredth")
+    assert(ordinal("one hundred and four") === "one hundred and fourth")
+    assert(ordinal("one hundred and five") === "one hundred and fifth")
+    assert(ordinal("one hundred and eight") === "one hundred and eighth")
+    assert(ordinal("one hundred and three") === "one hundred and third")
   }
 }
