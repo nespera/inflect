@@ -80,4 +80,9 @@ class InflectTest extends FunSuite {
     assert(ordinal("one hundred and eight") === "one hundred and eighth")
     assert(ordinal("one hundred and three") === "one hundred and third")
   }
+
+  test("Using the th method and implicit conversion for string ordinals") {
+    import ImplicitConversions._
+    assert("five".th == "fifth")
+  }
 }

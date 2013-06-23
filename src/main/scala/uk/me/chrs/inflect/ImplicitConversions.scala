@@ -10,4 +10,12 @@ object ImplicitConversions {
     }
     new Ordinalizer(n)
   }
+
+  implicit def int2ord(n: String) = {
+    class Ordinalizer(n: String) {
+      def th: String = Inflect.ordinal(n)
+    }
+    new Ordinalizer(n)
+  }
+
 }
