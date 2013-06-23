@@ -22,21 +22,19 @@ object Inflect {
 
   def ordinal (number: String) = {
 
-    def ends(end: String) = {
-      ("(.*)" + end + "$").r
-    }
+    val patterns = List("one$" -> "first", "two$" -> "second", "three$" -> "third",
+                        "ve$" -> "fth", "eight$" -> "eighth", "nine$" -> "ninth", "ty$" -> "tieth")
 
-    val patterns = List("one" -> "first", "two" -> "second", "three" -> "third",
-                        "ve" -> "fth", "eight" -> "eighth", "nine" -> "ninth",
-                        "ty" -> "tieth", "" -> "th")
-
-    var answer: String = ""
-    for (pattern <-  patterns) {
-      val theMatch = ends(pattern._1).findFirstMatchIn(number)
-      if (theMatch.isDefined && answer.isEmpty) {
-        answer = theMatch.get.group(1) + pattern._2
+    def replaceSuffix(p: List[(String, String)]): String = {
+      p match {
+        case x :: xs => if (number.matches(".*" + x._1))
+            x._1.r.replaceFirstIn(number, x._2)
+          else replaceSuffix(xs)
+        case _ => number + "th"
       }
     }
-    answer
+
+    replaceSuffix(patterns)
   }
+
 }
