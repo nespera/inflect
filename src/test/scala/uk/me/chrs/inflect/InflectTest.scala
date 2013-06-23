@@ -47,7 +47,7 @@ class InflectTest extends FunSuite {
     assert(1.th == "1st")
   }
 
-  test("string ordinal tests") {
+  test("string ordinals") {
     assert(ordinal("zero") === "zeroth")
     assert(ordinal("one") === "first")
     assert(ordinal("two") === "second")
