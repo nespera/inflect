@@ -1,7 +1,7 @@
 package uk.me.chrs.inflect
 
 import org.scalatest.FunSuite
-import uk.me.chrs.inflect.Inflect._
+import Inflect._
 
 class InflectTest extends FunSuite {
 
@@ -43,6 +43,7 @@ class InflectTest extends FunSuite {
   }
 
   test("Using the th method and implicit conversion") {
+    import ImplicitConversions._
     assert(1.th == "1st")
   }
 }
