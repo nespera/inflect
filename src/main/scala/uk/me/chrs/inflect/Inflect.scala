@@ -1,5 +1,7 @@
 package uk.me.chrs.inflect
 
+import scala.language.implicitConversions
+
 object Inflect {
 
   def ordinal (number: Int) = {
@@ -13,11 +15,18 @@ object Inflect {
       }
     }
 
-    def ordinalSuffix(number: Int): String = {
+    def suffix(number: Int): String = {
       if (number % 100 /10 == 1) "th" else digitSuffix(number % 10)
     }
 
-    number + ordinalSuffix(number)
+    number + suffix(number)
+  }
+
+  implicit def int2ord(n: Int) = {
+    class Ordinalizer(n: Int) {
+      def th: String = ordinal(n)
+    }
+    new Ordinalizer(n)
   }
 
 }

@@ -41,4 +41,8 @@ class InflectTest extends FunSuite {
     assert(ordinal(8014) === "8014th")
     assert(ordinal(10004) === "10004th")
   }
+
+  test("Using the th method and implicit conversion") {
+    assert(1.th == "1st")
+  }
 }
