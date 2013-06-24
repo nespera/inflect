@@ -28,4 +28,13 @@ class CardinalTest extends FunSuite {
     assert(cardinal(18) === "eighteen")
     assert(cardinal(19) === "nineteen")
   }
+
+  test("can override the word for minus") {
+    object MyInflect extends Inflector {
+      override val MINUS: String = "negative"
+    }
+
+    assert(MyInflect.cardinal(-7) === "negative seven")
+    assert(MyInflect.cardinal(8) === "eight")
+  }
 }

@@ -1,6 +1,8 @@
 package uk.me.chrs.inflect
 
-object Inflect {
+trait Inflector {
+
+  val MINUS: String = "minus"
 
   def ordinal (number: Int) = {
 
@@ -41,12 +43,16 @@ object Inflect {
     val digits = List("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
     val teens = List("ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
 
-    if (number < 0)
-      "minus " + cardinal(-number)
+    if (number < 0) MINUS + " " + cardinal(-number)
+
     else if (number < 10)
       digits(number)
     else
       teens(number - 10)
   }
 
+
+
 }
+
+object Inflect extends Inflector{}
