@@ -53,8 +53,10 @@ trait Inflector {
         small(value)
       else if (value < 100)
         tens(value / 10) + ifNonZero(value % 10){"-" + small(_)}
-      else
+      else if (value < 1000)
         positive(value / 100) + " hundred" + ifNonZero(value % 100) {" and " + positive(_)}
+      else
+        positive(value / 1000) + " thousand" + ifNonZero(value % 1000) {" and " + positive(_)}
     }
 
     if (number < 0) MINUS + " " + positive(-number) else positive(number)
