@@ -40,19 +40,23 @@ trait Inflector {
   }
 
   def cardinal (number: Int): String = {
-    val digits = List("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
-    val teens = List("ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
+    val small = List("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+      "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
+    val tens = List("", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
 
-    if (number < 0) MINUS + " " + cardinal(-number)
+    def ifNonZero(x: Int)(f: Int => String) = {
+      if (x != 0) f(x) else ""
+    }
 
-    else if (number < 10)
-      digits(number)
-    else
-      teens(number - 10)
+    def positive(value: Int): String = {
+      if (value < 20)
+        small(value)
+      else
+        tens(value / 10) + ifNonZero(value % 10){"-" + small(_)}
+    }
+
+    if (number < 0) MINUS + " " + positive(-number) else positive(number)
   }
-
-
-
 }
 
 object Inflect extends Inflector{}
