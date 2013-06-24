@@ -14,7 +14,7 @@ Started out with some simple parts around inflection of numbers. I will then mov
 import uk.me.chrs.inflect.Inflect._
 
 println("You are customer number " + cardinal(78))
-println("This year's budget is " + cardinal("89000000000") + " dollars)
+println("This year's budget is " + cardinal("89000000000") + " dollars")
 ```
 prints
 
