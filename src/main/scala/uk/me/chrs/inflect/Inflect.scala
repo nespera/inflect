@@ -37,10 +37,13 @@ object Inflect {
     replaceSuffix(patterns)
   }
 
-  def cardinal (number: Int) = {
+  def cardinal (number: Int): String = {
     val digits = List("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
     val teens = List("ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
-    if (number < 10)
+
+    if (number < 0)
+      "minus " + cardinal(-number)
+    else if (number < 10)
       digits(number)
     else
       teens(number - 10)

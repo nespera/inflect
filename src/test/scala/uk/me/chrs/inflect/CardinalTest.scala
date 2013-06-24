@@ -6,6 +6,7 @@ import Inflect._
 class CardinalTest extends FunSuite {
 
   test("numeric cardinals") {
+    assert(cardinal(-1) === "minus one")
     assert(cardinal(0) === "zero")
     assert(cardinal(1) === "one")
     assert(cardinal(2) === "two")
