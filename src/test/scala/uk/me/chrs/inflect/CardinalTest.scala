@@ -37,7 +37,9 @@ class CardinalTest extends FunSuite {
     assert(cardinal(555) === "five hundred and fifty-five")
     assert(cardinal(1000) === "one thousand")
     assert(cardinal(2067) === "two thousand and sixty-seven")
-    assert(cardinal(231094) === "two hundred and thirty-one thousand and ninety-four")
+    assert(cardinal(42388) === "forty-two thousand, three hundred and eighty-eight")
+    assert(cardinal(876789656) === "eight hundred and seventy-six million, seven hundred and eighty-nine thousand, six hundred and fifty-six")
+    assert(cardinal(BigInt("78000000656")) === "seventy-eight billion, six hundred and fifty-six")
   }
 
   test("can override the word for minus") {

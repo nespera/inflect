@@ -1,5 +1,7 @@
 package uk.me.chrs.inflect
 
+import ch.epfl.lamp.compiler.msil.emit.ILPrinterVisitor
+
 trait Inflector {
 
   val MINUS: String = "minus"
@@ -39,24 +41,36 @@ trait Inflector {
     replaceSuffix(patterns)
   }
 
-  def cardinal (number: Int): String = {
+  def cardinal (number: BigInt): String = {
     val small = List("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
       "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
     val tens = List("", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
 
-    def ifNonZero(x: Int)(f: Int => String) = {
+    def ifNonZero(x: BigInt)(f: BigInt => String) = {
       if (x != 0) f(x) else ""
     }
 
-    def positive(value: Int): String = {
+    def positive(value: BigInt, prefix: Boolean = false): String = {
+      def add(pre:String) = if (prefix) pre else ""
+
+      def doPower(power: Int, name: String): String = {
+        add(", ") + positive(value / power) + " " + name + ifNonZero(value % power) {
+          positive(_, prefix = true)
+        }
+      }
+
       if (value < 20)
-        small(value)
+        add(" and ") + small(value.intValue())
       else if (value < 100)
-        tens(value / 10) + ifNonZero(value % 10){"-" + small(_)}
+        add(" and ") + tens(value.intValue() / 10) + ifNonZero(value % 10){x => "-" + small(x.intValue())}
       else if (value < 1000)
-        positive(value / 100) + " hundred" + ifNonZero(value % 100) {" and " + positive(_)}
+        doPower(100, "hundred")
+      else if (value < 1000000)
+        doPower(1000, "thousand")
+      else if (value < 1000000000)
+        doPower(1000000, "million")
       else
-        positive(value / 1000) + " thousand" + ifNonZero(value % 1000) {" and " + positive(_)}
+        doPower(1000000000, "billion")
     }
 
     if (number < 0) MINUS + " " + positive(-number) else positive(number)
