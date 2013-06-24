@@ -1,10 +1,9 @@
 package uk.me.chrs.inflect
 
-import ch.epfl.lamp.compiler.msil.emit.ILPrinterVisitor
-
 trait Inflector {
 
-  val MINUS: String = "minus"
+  val MINUS_INDICATOR: String = "minus"
+  val AND_SEPARATOR: String = "and"
 
   def ordinal (number: Int) = {
 
@@ -50,6 +49,8 @@ trait Inflector {
       if (x != 0) f(x) else ""
     }
 
+    def andPrefix = if (AND_SEPARATOR.isEmpty) " " else " " + AND_SEPARATOR + " "
+
     def positive(value: BigInt, prefix: Boolean = false): String = {
       def add(pre:String) = if (prefix) pre else ""
 
@@ -60,9 +61,9 @@ trait Inflector {
       }
 
       if (value < 20)
-        add(" and ") + small(value.intValue())
+        add(andPrefix) + small(value.intValue())
       else if (value < 100)
-        add(" and ") + tens(value.intValue() / 10) + ifNonZero(value % 10){x => "-" + small(x.intValue())}
+        add(andPrefix) + tens(value.intValue() / 10) + ifNonZero(value % 10){x => "-" + small(x.intValue())}
       else if (value < 1000)
         doPower(100, "hundred")
       else if (value < 1000000)
@@ -73,8 +74,11 @@ trait Inflector {
         doPower(1000000000, "billion")
     }
 
-    if (number < 0) MINUS + " " + positive(-number) else positive(number)
+    if (number < 0) MINUS_INDICATOR + " " + positive(-number) else positive(number)
   }
+
+  def cardinal (number: String): String = cardinal(BigInt(number))
+
 }
 
 object Inflect extends Inflector{}
