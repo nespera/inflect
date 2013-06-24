@@ -3,7 +3,7 @@ package uk.me.chrs.inflect
 import org.scalatest.FunSuite
 import Inflect._
 
-class InflectTest extends FunSuite {
+class OrdinalTest extends FunSuite {
 
   test("numeric ordinals") {
     assert(ordinal(0) === "0th")
