@@ -8,6 +8,20 @@ Started out with some simple parts around inflection of numbers. I will then mov
 
 ## Usage
 
+### Numbers in words
+
+```scala
+import uk.me.chrs.inflect.Inflect._
+
+println("You are customer number " + cardinal(78))
+println("This year's budget is " + cardinal("89000000000") + " dollars)
+```
+prints
+
+    You are customer seventy-eight
+    This year's budget is eighty-nine billion dollars
+
+
 ### Ordinals
 
 ```scala
@@ -20,6 +34,8 @@ prints
 
     This is your 3rd attempt
     This is your fifth attempt
+
+### Implicit Conversions
 
 ```scala
 import uk.me.chrs.inflect.ImplicitConversions._
