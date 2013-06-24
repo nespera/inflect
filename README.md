@@ -4,6 +4,8 @@ I hope to port Damian Conway's Inflect Perl Module (http://search.cpan.org/~dcon
 
 Started out with some simple parts around inflection of numbers. I will then move onto pluralizing nouns and so on..
 
+![Travis Build](https://api.travis-ci.org/nespera/inflect.png)
+
 ## Usage
 
 ### Ordinals
