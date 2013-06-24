@@ -18,7 +18,7 @@ println("This year's budget is " + cardinal("89000000000") + " dollars)
 ```
 prints
 
-    You are customer seventy-eight
+    You are customer number seventy-eight
     This year's budget is eighty-nine billion dollars
 
 
