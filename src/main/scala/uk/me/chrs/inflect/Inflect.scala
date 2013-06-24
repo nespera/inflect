@@ -51,12 +51,12 @@ trait Inflector {
 
     def andPrefix = if (AND_SEPARATOR.isEmpty) " " else " " + AND_SEPARATOR + " "
 
-    def positive(value: BigInt, prefix: Boolean = false): String = {
-      def add(pre:String) = if (prefix) pre else ""
+    def render(value: BigInt, withPrefix: Boolean = false): String = {
+      def add(pre: String) = if (withPrefix) pre else ""
 
       def doPower(power: Int, name: String): String = {
-        add(", ") + positive(value / power) + " " + name + ifNonZero(value % power) {
-          positive(_, prefix = true)
+        add(", ") + render(value / power) + " " + name + ifNonZero(value % power) {
+          render(_, withPrefix = true)
         }
       }
 
@@ -74,7 +74,7 @@ trait Inflector {
         doPower(1000000000, "billion")
     }
 
-    if (number < 0) MINUS_INDICATOR + " " + positive(-number) else positive(number)
+    if (number < 0) MINUS_INDICATOR + " " + render(-number) else render(number)
   }
 
   def cardinal (number: String): String = cardinal(BigInt(number))
