@@ -51,8 +51,10 @@ trait Inflector {
     def positive(value: Int): String = {
       if (value < 20)
         small(value)
-      else
+      else if (value < 100)
         tens(value / 10) + ifNonZero(value % 10){"-" + small(_)}
+      else
+        positive(value / 100) + " hundred" + ifNonZero(value % 100) {" and " + positive(_)}
     }
 
     if (number < 0) MINUS + " " + positive(-number) else positive(number)

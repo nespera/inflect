@@ -31,6 +31,10 @@ class CardinalTest extends FunSuite {
     assert(cardinal(21) === "twenty-one")
     assert(cardinal(30) === "thirty")
     assert(cardinal(45) === "forty-five")
+    assert(cardinal(99) === "ninety-nine")
+    assert(cardinal(100) === "one hundred")
+    assert(cardinal(216) === "two hundred and sixteen")
+    assert(cardinal(555) === "five hundred and fifty-five")
   }
 
   test("can override the word for minus") {
