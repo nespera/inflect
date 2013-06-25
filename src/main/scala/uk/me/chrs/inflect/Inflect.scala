@@ -1,10 +1,8 @@
 package uk.me.chrs.inflect
 
-import scala.beans.BeanProperty
-
 trait Inflector {
 
-  def options: InflectionOptions = new InflectionOptions()
+  def options: Options = Options()
 
   def ordinal (number: Int) = {
 
@@ -85,12 +83,9 @@ trait Inflector {
 
 }
 
-class InflectionOptions(@BeanProperty val minusIndicator : String = "minus",
-                        @BeanProperty val andSeparator: String = "and")
-
 object Inflect extends Inflector
+
+class CustomInflector(override val options: Options) extends Inflector
 
 //Java Interoperability Classes
 class Inflect {}
-
-class CustomInflector(override val options: InflectionOptions) extends Inflector

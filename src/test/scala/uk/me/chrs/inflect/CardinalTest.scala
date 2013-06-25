@@ -42,15 +42,17 @@ class CardinalTest extends FunSuite {
     assert(cardinal("78000000656") === "seventy-eight billion, six hundred and fifty-six")
   }
 
+  object NegativeInflect extends CustomInflector(Options(minusIndicator = "negative"))
+
   test("can override the minus indicator") {
-    object MyInflect extends CustomInflector(new InflectionOptions(minusIndicator = "negative"))
-    assert(MyInflect.cardinal(-7) === "negative seven")
-    assert(MyInflect.cardinal(8) === "eight")
+    assert(NegativeInflect.cardinal(-7) === "negative seven")
+    assert(NegativeInflect.cardinal(8) === "eight")
   }
 
+  object NoAndInflect extends CustomInflector(Options(andSeparator = ""))
+
   test("can override the 'and' separator") {
-    object MyInflect extends CustomInflector(new InflectionOptions(andSeparator = ""))
-    assert(MyInflect.cardinal(107) === "one hundred seven")
-    assert(MyInflect.cardinal(6019) === "six thousand nineteen")
+    assert(NoAndInflect.cardinal(107) === "one hundred seven")
+    assert(NoAndInflect.cardinal(6019) === "six thousand nineteen")
   }
 }
