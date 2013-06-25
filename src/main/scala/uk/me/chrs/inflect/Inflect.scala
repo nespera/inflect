@@ -40,6 +40,9 @@ trait Inflector {
     replaceSuffix(patterns)
   }
 
+  //To keep life easy for Java
+  def cardinal (number: Int): String = cardinal(BigInt(number))
+
   def cardinal (number: BigInt): String = {
     val small = List("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
       "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
@@ -83,5 +86,5 @@ trait Inflector {
 
 object Inflect extends Inflector{}
 
-//This is mainly here to allow Java's to call static methods
+//To keep life easy for Java
 class Inflect {}
