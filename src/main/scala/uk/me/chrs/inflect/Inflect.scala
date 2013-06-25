@@ -82,3 +82,6 @@ trait Inflector {
 }
 
 object Inflect extends Inflector{}
+
+//This is mainly here to allow Java's to call static methods
+class Inflect {}
