@@ -1,12 +1,13 @@
 # inflect
 
-I hope to port Damian Conway's Inflect Perl Module (http://search.cpan.org/~dconway/Lingua-EN-Inflect-1.895/) to Scala. 
+I hope to port Damian Conway's Inflect Perl Module (http://search.cpan.org/~dconway/Lingua-EN-Inflect-1.895/) to Scala.
+I also want the resulting library to be usable from both Java and Scala.
 
-Started out with some simple parts around inflection of numbers. I will then move onto pluralizing nouns and so on..
+I've started out with some simple parts around inflection of numbers. I will then move onto pluralizing nouns and so on..
 
 [![Travis Build](https://api.travis-ci.org/nespera/inflect.png)](https://travis-ci.org/nespera/inflect)
 
-## Usage
+## Scala Usage
 
 ### Numbers in words
 
@@ -50,4 +51,22 @@ prints
 
     This is your 112th attempt
     This is your first attempt
+
+## Java Usage
+
+```java
+static import uk.me.chrs.inflect.Inflect.*
+
+System.out.println("You are customer number " + cardinal(78))
+System.out.println("This year's budget is " + cardinal("89000000000") + " dollars")
+```
+
+### Ordinals
+
+```java
+static import uk.me.chrs.inflect.Inflect.*
+
+System.out.println("This is your " + ordinal(3) + " attempt")
+System.out.println("This is your " + ordinal("five") + " attempt")
+```
 
