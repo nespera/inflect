@@ -17,11 +17,9 @@ import uk.me.chrs.inflect.Inflect._
 println("You are customer number " + cardinal(78))
 println("This year's budget is " + cardinal("89000000000") + " dollars")
 ```
-prints
 
     You are customer number seventy-eight
     This year's budget is eighty-nine billion dollars
-
 
 ### Ordinals
 
@@ -31,7 +29,6 @@ import uk.me.chrs.inflect.Inflect._
 println("This is your " + ordinal(3) + " attempt")
 println("This is your " + ordinal("five") + " attempt")
 ```
-prints
 
     This is your 3rd attempt
     This is your fifth attempt
@@ -47,12 +44,12 @@ val m = "one"
 println("This is your " + m.th + " attempt")
 ```
 
-prints
-
     This is your 112th attempt
     This is your first attempt
 
 ## Java Usage
+
+### Numbers in words
 
 ```java
 static import uk.me.chrs.inflect.Inflect.*
@@ -60,6 +57,9 @@ static import uk.me.chrs.inflect.Inflect.*
 System.out.println("You are customer number " + cardinal(78))
 System.out.println("This year's budget is " + cardinal("89000000000") + " dollars")
 ```
+
+    You are customer number seventy-eight
+    This year's budget is eighty-nine billion dollars
 
 ### Ordinals
 
@@ -69,23 +69,26 @@ static import uk.me.chrs.inflect.Inflect.*
 System.out.println("This is your " + ordinal(3) + " attempt")
 System.out.println("This is your " + ordinal("five") + " attempt")
 ```
+
+    This is your 3rd attempt
+    This is your fifth attempt
+
 ## Customizing the output
 
 It is possible to customize the output. At present it is possible to set the word used for negative numbers (defaults to
-"minus") and the word used to separate the tens and units (defaults to "and")
+"minus") and the word used to separate the tens and units from the other numbers (defaults to "and")
 
 ```scala
 import uk.me.chrs.inflect.Inflect._
 
 println("Your score is " + cardinal(-6007))
 
-object MyInflector extends CustomInflector(Options(minusIndicator = "negative", andSeparator = ""))
+object MyInflector extends CustomInflector(Options("negative", ""))
 
 import MyInflector._
 
 println("Your score is " + cardinal(-6007))
 ```
-prints
 
     Your score is minus six thousand and seven
     Your score is negative six thousand seven
@@ -98,8 +101,6 @@ Inflector inflector = new CustomInflector(new Options("negative", ""));
 System.out.println("The temperature is " + cardinal(-203))
 System.out.println("The temperature is " + inflector.cardinal(-203))
 ```
-
-prints
 
     The temperature is minus two hundred and three
     The temperature is negative two hundred three
