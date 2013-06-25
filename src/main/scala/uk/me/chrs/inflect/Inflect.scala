@@ -1,9 +1,10 @@
 package uk.me.chrs.inflect
 
+import scala.beans.BeanProperty
+
 trait Inflector {
 
-  val MINUS_INDICATOR: String = "minus"
-  val AND_SEPARATOR: String = "and"
+  def options: InflectionOptions = new InflectionOptions()
 
   def ordinal (number: Int) = {
 
@@ -52,7 +53,7 @@ trait Inflector {
       if (x != 0) f(x) else ""
     }
 
-    def andPrefix = if (AND_SEPARATOR.isEmpty) " " else " " + AND_SEPARATOR + " "
+    def andPrefix = if (options.andSeparator.isEmpty) " " else " " + options.andSeparator + " "
 
     def render(value: BigInt, withPrefix: Boolean = false): String = {
       def add(pre: String) = if (withPrefix) pre else ""
@@ -77,14 +78,19 @@ trait Inflector {
         doPower(1000000000, "billion")
     }
 
-    if (number < 0) MINUS_INDICATOR + " " + render(-number) else render(number)
+    if (number < 0) options.minusIndicator + " " + render(-number) else render(number)
   }
 
   def cardinal (number: String): String = cardinal(BigInt(number))
 
 }
 
-object Inflect extends Inflector{}
+class InflectionOptions(@BeanProperty val minusIndicator : String = "minus",
+                        @BeanProperty val andSeparator: String = "and")
 
-//To keep life easy for Java
+object Inflect extends Inflector
+
+//Java Interoperability Classes
 class Inflect {}
+
+class CustomInflector(override val options: InflectionOptions) extends Inflector

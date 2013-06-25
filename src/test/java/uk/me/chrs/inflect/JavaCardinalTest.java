@@ -13,5 +13,12 @@ public class JavaCardinalTest {
     assertEquals("one hundred and eighty-five", cardinal("185"));
   }
 
+  @Test
+  public void canOverrideOptions() {
+    Inflector inflector = new CustomInflector(new InflectionOptions("negative", ""));
+    assertEquals("one hundred five", inflector.cardinal(105));
+    assertEquals("two thousand nine", inflector.cardinal(2009));
+    assertEquals("negative twenty-six", inflector.cardinal(-26));
+  }
 
 }

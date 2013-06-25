@@ -43,19 +43,13 @@ class CardinalTest extends FunSuite {
   }
 
   test("can override the minus indicator") {
-    object MyInflect extends Inflector {
-      override val MINUS_INDICATOR: String = "negative"
-    }
-
+    object MyInflect extends CustomInflector(new InflectionOptions(minusIndicator = "negative"))
     assert(MyInflect.cardinal(-7) === "negative seven")
     assert(MyInflect.cardinal(8) === "eight")
   }
 
   test("can override the 'and' separator") {
-    object MyInflect extends Inflector {
-      override val AND_SEPARATOR: String = ""
-    }
-
+    object MyInflect extends CustomInflector(new InflectionOptions(andSeparator = ""))
     assert(MyInflect.cardinal(107) === "one hundred seven")
     assert(MyInflect.cardinal(6019) === "six thousand nineteen")
   }
