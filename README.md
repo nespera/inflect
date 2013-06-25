@@ -69,4 +69,37 @@ static import uk.me.chrs.inflect.Inflect.*
 System.out.println("This is your " + ordinal(3) + " attempt")
 System.out.println("This is your " + ordinal("five") + " attempt")
 ```
+## Customizing the output
 
+It is possible to customize the output. At present it is possible to set the word used for negative numbers (defaults to
+"minus") and the word used to separate the tens and units (defaults to "and")
+
+```scala
+import uk.me.chrs.inflect.Inflect._
+
+println("Your score is " + cardinal(-6007))
+
+object MyInflector extends CustomInflector(Options(minusIndicator = "negative", andSeparator = ""))
+
+import MyInflector._
+
+println("Your score is " + cardinal(-6007))
+```
+prints
+
+    Your score is minus six thousand and seven
+    Your score is negative six thousand seven
+
+```java
+import static uk.me.chrs.inflect.Inflect.cardinal;
+
+Inflector inflector = new CustomInflector(new Options("negative", ""));
+
+System.out.println("The temperature is " + cardinal(-203))
+System.out.println("The temperature is " + inflector.cardinal(-203))
+```
+
+prints
+
+    The temperature is minus two hundred and three
+    The temperature is negative two hundred three
