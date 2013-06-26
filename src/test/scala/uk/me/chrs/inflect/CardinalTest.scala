@@ -55,4 +55,9 @@ class CardinalTest extends FunSuite {
     assert(NoAndInflect.cardinal(107) === "one hundred seven")
     assert(NoAndInflect.cardinal(6019) === "six thousand nineteen")
   }
+
+  test("implicit conversion to words") {
+    import ImplicitConversions._
+    assert(789.inWords === "seven hundred and eighty-nine")
+  }
 }

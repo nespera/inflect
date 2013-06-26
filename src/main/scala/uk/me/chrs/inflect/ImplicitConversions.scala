@@ -18,4 +18,10 @@ object ImplicitConversions {
     new Ordinalizer(n)
   }
 
+  implicit def int2card(n: Int) = {
+    class Cardinalizer(n: Int) {
+      def inWords: String = Inflect.cardinal(n)
+    }
+    new Cardinalizer(n)
+  }
 }

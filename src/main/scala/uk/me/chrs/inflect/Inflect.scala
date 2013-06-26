@@ -4,7 +4,7 @@ trait Inflector {
 
   def options: Options = Options()
 
-  def ordinal (number: Int) = {
+  def ordinal (number: BigInt) = {
 
     def digitSuffix(digit: Int): String = {
       digit match {
@@ -15,12 +15,15 @@ trait Inflector {
       }
     }
 
-    def suffix(number: Int): String = {
-      if (number % 100 /10 == 1) "th" else digitSuffix(number % 10)
+    def suffix(number: BigInt): String = {
+      if (number % 100 /10 == 1) "th" else digitSuffix((number % 10).toInt)
     }
 
     number + suffix(number)
   }
+
+  //To keep life easy for Java
+  def ordinal (number: Int): String = ordinal(BigInt(number))
 
   def ordinal (number: String) = {
 
