@@ -6,24 +6,46 @@ import org.scalatest.FunSuite
 class PluralTest extends FunSuite {
 
   test("basic rule based plurals") {
-    assert(plural("dog") === "dogs")
-    assert(plural("ferry") === "ferries")
-    assert(plural("fox") === "foxes")
-    assert(plural("shelf") === "shelves")
-    assert(plural("quiz") === "quizzes")
-    assert(plural("fizz") === "fizzes")
-    assert(plural("church") === "churches")
-    assert(plural("wish") === "wishes")
-    assert(plural("bonus") === "bonuses")
-    assert(plural("domino") === "dominoes")
-    assert(plural("life") === "lives")
-    assert(plural("cuff") === "cuffs")
-    assert(plural("zoo") === "zoos")
-    assert(plural("boy") === "boys")
-    assert(plural("storey") === "storeys")
-    assert(plural("play") === "plays")
-    assert(plural("guy") === "guys")
-    assert(plural("soliloquy") === "soliloquies")
+    val examples = List(
+      "dog" -> "dogs",
+      "ferry" -> "ferries",
+      "fox" -> "foxes",
+      "shelf" -> "shelves",
+      "quiz" -> "quizzes",
+      "fizz" -> "fizzes",
+      "church" -> "churches",
+      "wish" -> "wishes",
+      "bonus" -> "bonuses",
+      "domino" -> "dominoes",
+      "life" -> "lives",
+      "cuff" -> "cuffs",
+      "zoo" -> "zoos",
+      "boy" -> "boys",
+      "storey" -> "storeys",
+      "play" -> "plays",
+      "guy" -> "guys",
+      "soliloquy" -> "soliloquies",
+      "series" -> "series")
+    check(examples)
+  }
+
+  test("words that don't change in plural") {
+    val examples = List(
+      "bison" -> "bison",
+      "fish" -> "fish",
+      "crayfish" -> "crayfish",
+      "swine" -> "swine",
+      "plankton" -> "plankton",
+      "squid" -> "squid",
+      "aircraft" -> "aircraft",
+      "hovercraft" -> "hovercraft")
+    check(examples)
+  }
+
+  def check(examples: List[(String, String)]) {
+    for ((s, p) <- examples) {
+      assert(plural(s) === p)
+    }
   }
 
 }

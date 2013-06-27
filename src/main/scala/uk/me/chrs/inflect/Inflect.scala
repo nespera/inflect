@@ -4,15 +4,37 @@ trait Inflector {
 
   def options: Options = Options()
 
+  val specialCases: List[(String, String)] = List(
+    "bison" -> "bison",
+    "buffalo" -> "buffalo",
+    "deer" -> "deer",
+    ".*fish" -> "$0",
+    "moose" -> "moose",
+    "pike" -> "pike",
+    "sheep" -> "sheep",
+    "salmon" -> "salmon",
+    "trout" -> "trout",
+    "swine" -> "swine",
+    "plankton" -> "plankton",
+    "squid" -> "squid",
+    "aircraft" -> "aircraft",
+    "watercraft" -> "watercraft",
+    "spacecraft" -> "spacecraft",
+    "hovercraft" -> "hovercraft")
+
+  val rules: List[(String, String)] = List(
+    "quy$" -> "quies",
+    "([aeou]y)$" -> "$1s",
+    "y$" -> "ies",
+    "(ff|oo)$" -> "$1s",
+    "ies$" -> "ies",
+    "(o|s|x|ch|sh)$" -> "$1es",
+    "fe?$" -> "ves",
+    "z?z$" -> "zzes")
+
   def plural (singular: String): String = {
-    val rules = List("quy$"->"quies",
-                     "([aeou]y)$" -> "$1s",
-                     "y$" -> "ies",
-                     "(ff|oo)$" -> "$1s",
-                     "(o|s|x|ch|sh)$" -> "$1es",
-                     "fe?$" -> "ves",
-                     "z?z$" -> "zzes")
-    val replace = rules.find(x => singular.matches(".*" + x._1)).getOrElse("$" -> "s")
+    val replacements = specialCases ++ rules
+    val replace = replacements.find(x => x._1.r.findFirstIn(singular).isDefined).getOrElse("$" -> "s")
     singular.replaceAll(replace._1, replace._2)
   }
 
