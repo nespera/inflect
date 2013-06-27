@@ -35,6 +35,8 @@ println("This is your " + ordinal("five") + " attempt")
 
 ### Implicit Conversions
 
+There are some implicit conversions defined. In order to use them, you need to explicitly import them.
+
 ```scala
 import uk.me.chrs.inflect.ImplicitConversions._
 
@@ -42,10 +44,13 @@ val n = 112
 println("This is your " + n.th + " attempt")
 val m = "one"
 println("This is your " + m.th + " attempt")
+val customerNumber = 789
+println("Welcome customer " + customerNumber.inWords)
 ```
 
     This is your 112th attempt
     This is your first attempt
+    Welcome customer seven hundred and eighty-nine
 
 ## Java Usage
 
