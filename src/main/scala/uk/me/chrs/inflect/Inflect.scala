@@ -4,6 +4,18 @@ trait Inflector {
 
   def options: Options = Options()
 
+  def plural (singular: String): String = {
+    val rules = List("quy$"->"quies",
+                     "([aeou]y)$" -> "$1s",
+                     "y$" -> "ies",
+                     "(ff|oo)$" -> "$1s",
+                     "(o|s|x|ch|sh)$" -> "$1es",
+                     "fe?$" -> "ves",
+                     "z?z$" -> "zzes")
+    val replace = rules.find(x => singular.matches(".*" + x._1)).getOrElse("$" -> "s")
+    singular.replaceAll(replace._1, replace._2)
+  }
+
   def ordinal (number: BigInt) = {
 
     def digitSuffix(digit: Int): String = {
