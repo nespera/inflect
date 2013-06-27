@@ -1,6 +1,5 @@
 package uk.me.chrs.inflect;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,6 +12,4 @@ public class JavaOrdinalTest {
     assertEquals("7th", ordinal(7));
     assertEquals("twenty-first", ordinal("twenty-one"));
   }
-
-
 }
