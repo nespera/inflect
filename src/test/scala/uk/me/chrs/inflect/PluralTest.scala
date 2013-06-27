@@ -25,7 +25,8 @@ class PluralTest extends FunSuite {
       "play" -> "plays",
       "guy" -> "guys",
       "soliloquy" -> "soliloquies",
-      "series" -> "series")
+      "series" -> "series",
+      "spike" -> "spikes")
     check(examples)
   }
 
@@ -38,7 +39,37 @@ class PluralTest extends FunSuite {
       "plankton" -> "plankton",
       "squid" -> "squid",
       "aircraft" -> "aircraft",
-      "hovercraft" -> "hovercraft")
+      "hovercraft" -> "hovercraft",
+      "giant squid" -> "giant squid")
+    check(examples)
+  }
+
+  test("special plurals") {
+    val examples = List(
+      "man" -> "men",
+      "woman" -> "women",
+      "human" -> "humans",
+      "fisherman" -> "fishermen",
+      "human being" -> "human beings",
+      "ox" -> "oxen",
+      "child" -> "children",
+      "grandchild" -> "grandchildren",
+      "childminder" -> "childminders",
+      "foot" -> "feet",
+      "footballer" -> "footballers",
+      "mouse" -> "mice",
+      "dormouse" -> "dormice",
+      "mousehole" -> "mouseholes",
+      "louse" -> "lice",
+      "blouse" -> "blouses",
+      "woodlouse" -> "woodlice",
+      "goose" -> "geese",
+      "mongoose" -> "mongooses",
+      "tooth" -> "teeth",
+      "toothbrush" -> "toothbrushes",
+      "person" -> "people",
+      "personality" -> "personalities"
+    )
     check(examples)
   }
 

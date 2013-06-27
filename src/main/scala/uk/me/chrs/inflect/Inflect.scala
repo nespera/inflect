@@ -5,37 +5,50 @@ trait Inflector {
   def options: Options = Options()
 
   val specialCases: List[(String, String)] = List(
-    "bison" -> "bison",
-    "buffalo" -> "buffalo",
-    "deer" -> "deer",
+    "\\bbison" -> "bison",
+    "\\bbuffalo" -> "buffalo",
+    "\\bdeer" -> "deer",
     ".*fish" -> "$0",
-    "moose" -> "moose",
-    "pike" -> "pike",
-    "sheep" -> "sheep",
-    "salmon" -> "salmon",
-    "trout" -> "trout",
-    "swine" -> "swine",
-    "plankton" -> "plankton",
-    "squid" -> "squid",
-    "aircraft" -> "aircraft",
-    "watercraft" -> "watercraft",
-    "spacecraft" -> "spacecraft",
-    "hovercraft" -> "hovercraft")
+    "\\bmoose" -> "moose",
+    "\\bpike" -> "pike",
+    "\\bsheep" -> "sheep",
+    "\\bsalmon" -> "salmon",
+    "\\btrout" -> "trout",
+    "\\bswine" -> "swine",
+    "\\bplankton" -> "plankton",
+    "\\bsquid" -> "squid",
+    "(.*craft)" -> "$0",
+    "\\bhuman" -> "humans",
+    "\\bcaiman" -> "caimans",
+    "\\bcayman" -> "caymans",
+    "\\btalisan" -> "talismans",
+    "\\bshaman" -> "shamans",
+    "(.*m)an" -> "$1en",
+    "\\box" -> "oxen",
+    "(.*child)" -> "$1ren",
+    "(.*f)oot" -> "$1eet",
+    "\\bblouse" -> "blouses",
+    "(.*[ml])ouse" -> "$1ice",
+    "\\bmongoose" -> "mongooses",
+    "(.*g)oose" -> "$1eese",
+    "(.*t)ooth" -> "$1eeth",
+    "(.*p)erson" -> "$1eople"
+  )
 
   val rules: List[(String, String)] = List(
-    "quy$" -> "quies",
-    "([aeou]y)$" -> "$1s",
-    "y$" -> "ies",
-    "(ff|oo)$" -> "$1s",
-    "ies$" -> "ies",
-    "(o|s|x|ch|sh)$" -> "$1es",
-    "fe?$" -> "ves",
-    "z?z$" -> "zzes")
+    "quy" -> "quies",
+    "([aeou]y)" -> "$1s",
+    "y" -> "ies",
+    "(ff|oo)" -> "$1s",
+    "ies" -> "ies",
+    "(o|s|x|ch|sh)" -> "$1es",
+    "fe?" -> "ves",
+    "z?z" -> "zzes")
 
   def plural (singular: String): String = {
     val replacements = specialCases ++ rules
-    val replace = replacements.find(x => x._1.r.findFirstIn(singular).isDefined).getOrElse("$" -> "s")
-    singular.replaceAll(replace._1, replace._2)
+    val replace = replacements.find(x => (x._1+"$").r.findFirstIn(singular).isDefined).getOrElse("$" -> "s")
+    singular.replaceAll(replace._1+"$", replace._2)
   }
 
   def ordinal (number: BigInt) = {
