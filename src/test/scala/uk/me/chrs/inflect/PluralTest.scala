@@ -71,7 +71,15 @@ class PluralTest extends FunSuite {
       "personality" -> "personalities",
       "vertex" -> "vertices",
       "matrix" -> "matrices",
-      "crisis" -> "crises"
+      "crisis" -> "crises",
+      "prima donna" -> "prima donnas",
+      "stimulus" -> "stimuli",
+      "radius" -> "radii",
+      "lowlife" -> "lowlifes",
+      "topaz" -> "topazes",
+      "vertebra" -> "vertebrae",
+      "stratum" -> "strata",
+      "criterion" -> "criteria"
     )
     check(examples)
   }
