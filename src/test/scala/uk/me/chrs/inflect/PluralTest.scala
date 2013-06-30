@@ -76,6 +76,12 @@ class PluralTest extends FunSuite {
     check(examples)
   }
 
+  test("conditional plurals") {
+    assert(plural("ox", 0) === "oxen")
+    assert(plural("ox", 1) === "ox")
+    assert(plural("ox", 2) === "oxen")
+  }
+
   def check(examples: List[(String, String)]) {
     for ((s, p) <- examples) {
       assert(plural(s) === p)

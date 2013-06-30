@@ -29,6 +29,10 @@ trait Inflector {
     singular.replaceAll(replace._1+"$", replace._2)
   }
 
+  def plural (singular: String, count: Long): String = {
+    if (count == 1) singular else plural(singular)
+  }
+
   def ordinal (number: BigInt) = {
 
     def digitSuffix(digit: Int): String = {
