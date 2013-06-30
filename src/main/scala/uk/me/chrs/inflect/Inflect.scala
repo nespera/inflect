@@ -33,7 +33,7 @@ trait Inflector {
     if (count == 1) singular else plural(singular)
   }
 
-  def ordinal (number: BigInt) = {
+  def ordinal (number: Long) = {
 
     def digitSuffix(digit: Int): String = {
       digit match {
@@ -44,15 +44,12 @@ trait Inflector {
       }
     }
 
-    def suffix(number: BigInt): String = {
+    def suffix(number: Long): String = {
       if (number % 100 /10 == 1) "th" else digitSuffix((number % 10).toInt)
     }
 
     number + suffix(number)
   }
-
-  //To keep life easy for Java
-  def ordinal (number: Long): String = ordinal(BigInt(number))
 
   def ordinal (number: String) = {
 
@@ -71,21 +68,18 @@ trait Inflector {
     replaceSuffix(patterns)
   }
 
-  //To keep life easy for Java
-  def cardinal (number: Long): String = cardinal(BigInt(number))
-
-  def cardinal (number: BigInt): String = {
+  def cardinal (number: Long): String = {
     val small = List("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
       "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
     val tens = List("", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
 
-    def ifNonZero(x: BigInt)(f: BigInt => String) = {
+    def ifNonZero(x: Long)(f: Long => String) = {
       if (x != 0) f(x) else ""
     }
 
     def andPrefix = if (options.andSeparator.isEmpty) " " else " " + options.andSeparator + " "
 
-    def render(value: BigInt, withPrefix: Boolean = false): String = {
+    def render(value: Long, withPrefix: Boolean = false): String = {
       def add(pre: String) = if (withPrefix) pre else ""
 
       def doPower(power: Int, name: String): String = {
@@ -111,7 +105,7 @@ trait Inflector {
     if (number < 0) options.minusIndicator + " " + render(-number) else render(number)
   }
 
-  def cardinal (number: String): String = cardinal(BigInt(number))
+  def cardinal (number: String): String = cardinal(number.toLong)
 
 }
 
@@ -119,5 +113,5 @@ object Inflect extends Inflector
 
 class CustomInflector(override val options: Options) extends Inflector
 
-//Java Interoperability Classes
+//Java Interoperability
 class Inflect {}
