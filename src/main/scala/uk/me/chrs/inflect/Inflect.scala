@@ -4,36 +4,12 @@ trait Inflector {
 
   def options: Options = Options()
 
-  val specialCases: List[(String, String)] = List(
-    "\\bbison" -> "bison",
-    "\\bbuffalo" -> "buffalo",
-    "\\bdeer" -> "deer",
-    ".*fish" -> "$0",
-    "\\bmoose" -> "moose",
-    "\\bpike" -> "pike",
-    "\\bsheep" -> "sheep",
-    "\\bsalmon" -> "salmon",
-    "\\btrout" -> "trout",
-    "\\bswine" -> "swine",
-    "\\bplankton" -> "plankton",
-    "\\bsquid" -> "squid",
-    "(.*craft)" -> "$0",
-    "\\bhuman" -> "humans",
-    "\\bcaiman" -> "caimans",
-    "\\bcayman" -> "caymans",
-    "\\btalisan" -> "talismans",
-    "\\bshaman" -> "shamans",
-    "(.*m)an" -> "$1en",
-    "\\box" -> "oxen",
-    "(.*child)" -> "$1ren",
-    "(.*f)oot" -> "$1eet",
-    "\\bblouse" -> "blouses",
-    "(.*[ml])ouse" -> "$1ice",
-    "\\bmongoose" -> "mongooses",
-    "(.*g)oose" -> "$1eese",
-    "(.*t)ooth" -> "$1eeth",
-    "(.*p)erson" -> "$1eople"
-  )
+  def loadSpecialCases: List[(String, String)] = {
+    val stream = io.Source.fromInputStream(getClass.getResourceAsStream("special-plurals.txt"))
+    stream.getLines().toList.map((x) => x.split(",", 2)).map((x) => (x(0), x(1)))
+  }
+
+  val specialCases: List[(String, String)] = loadSpecialCases
 
   val rules: List[(String, String)] = List(
     "quy" -> "quies",
