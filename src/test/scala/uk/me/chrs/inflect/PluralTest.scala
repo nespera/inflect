@@ -79,7 +79,8 @@ class PluralTest extends FunSuite {
       "topaz" -> "topazes",
       "vertebra" -> "vertebrae",
       "stratum" -> "strata",
-      "criterion" -> "criteria"
+      "criterion" -> "criteria",
+      "rhino" -> "rhinos"
     )
     check(examples)
   }
