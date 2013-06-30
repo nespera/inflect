@@ -68,7 +68,10 @@ class PluralTest extends FunSuite {
       "tooth" -> "teeth",
       "toothbrush" -> "toothbrushes",
       "person" -> "people",
-      "personality" -> "personalities"
+      "personality" -> "personalities",
+      "vertex" -> "vertices",
+      "matrix" -> "matrices",
+      "crisis" -> "crises"
     )
     check(examples)
   }

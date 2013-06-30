@@ -12,6 +12,8 @@ trait Inflector {
   val specialCases: List[(String, String)] = loadSpecialCases
 
   val rules: List[(String, String)] = List(
+    "[ie]x" -> "ices",
+    "is" -> "es",
     "quy" -> "quies",
     "([aeou]y)" -> "$1s",
     "y" -> "ies",
