@@ -16,6 +16,7 @@
 \bcayman,caymans
 \btalisan,talismans
 \bshaman,shamans
+\bottoman,ottomans
 (.*m)an,$1en
 \box,oxen
 (.*child),$1ren
@@ -170,3 +171,6 @@
 \bweirdo,weirdos
 \byo-yo,yo-yos
 \bzero,zeros
+\bstomach,stomachs
+\beunuch,eunuchs
+\bczech,czechs

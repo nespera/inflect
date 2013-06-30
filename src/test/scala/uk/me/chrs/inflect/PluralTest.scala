@@ -80,7 +80,8 @@ class PluralTest extends FunSuite {
       "vertebra" -> "vertebrae",
       "stratum" -> "strata",
       "criterion" -> "criteria",
-      "rhino" -> "rhinos"
+      "rhino" -> "rhinos",
+      "stomach" -> "stomachs"
     )
     check(examples)
   }
