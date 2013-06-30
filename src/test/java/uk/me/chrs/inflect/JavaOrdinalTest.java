@@ -10,6 +10,7 @@ public class JavaOrdinalTest {
   @Test
   public void ordinalsInJava() {
     assertEquals("7th", ordinal(7));
+    assertEquals("9000th", ordinal(9000l));
     assertEquals("twenty-first", ordinal("twenty-one"));
   }
 }

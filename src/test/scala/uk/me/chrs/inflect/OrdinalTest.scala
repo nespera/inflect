@@ -40,6 +40,7 @@ class OrdinalTest extends FunSuite {
     assert(ordinal(312) === "312th")
     assert(ordinal(8014) === "8014th")
     assert(ordinal(10004) === "10004th")
+    assert(ordinal(123456789000000000l) === "123456789000000000th")
     assert(ordinal(BigInt("123456789000000000")) === "123456789000000000th")
   }
 

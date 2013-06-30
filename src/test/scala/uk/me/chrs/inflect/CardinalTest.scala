@@ -40,6 +40,7 @@ class CardinalTest extends FunSuite {
     assert(cardinal(3100) === "three thousand, one hundred")
     assert(cardinal(42388) === "forty-two thousand, three hundred and eighty-eight")
     assert(cardinal(876789656) === "eight hundred and seventy-six million, seven hundred and eighty-nine thousand, six hundred and fifty-six")
+    assert(cardinal(78000000656l) === "seventy-eight billion, six hundred and fifty-six")
     assert(cardinal("78000000656") === "seventy-eight billion, six hundred and fifty-six")
   }
 

@@ -11,6 +11,7 @@ public class JavaCardinalTest {
   public void cardinalsInJava() {
     assertEquals("seven", cardinal(7));
     assertEquals("one hundred and eighty-five", cardinal("185"));
+    assertEquals("eight hundred and ninety", cardinal(890l));
   }
 
   @Test

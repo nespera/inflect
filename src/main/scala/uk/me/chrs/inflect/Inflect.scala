@@ -70,7 +70,7 @@ trait Inflector {
   }
 
   //To keep life easy for Java
-  def ordinal (number: Int): String = ordinal(BigInt(number))
+  def ordinal (number: Long): String = ordinal(BigInt(number))
 
   def ordinal (number: String) = {
 
@@ -90,7 +90,7 @@ trait Inflector {
   }
 
   //To keep life easy for Java
-  def cardinal (number: Int): String = cardinal(BigInt(number))
+  def cardinal (number: Long): String = cardinal(BigInt(number))
 
   def cardinal (number: BigInt): String = {
     val small = List("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
