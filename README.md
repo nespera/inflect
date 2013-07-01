@@ -19,11 +19,12 @@ println("I see dead " + plural("person"))
 //Conditional plural
 val cakes = 1
 val pies = 2
-println("The picnic contains " + cakes + " " + plural("cake", cakes) + " and " + pies + " " + plural("pie", pies)
+println("The picnic contains " + cakes + " " + plural("cake", cakes) + 
+  " and " + pies + " " + plural("pie", pies)
 ```
 
     I see dead people
-    The picnice contains 1 cake and 2 pies
+    The picnic contains 1 cake and 2 pies
 
 
 ### Numbers in words
