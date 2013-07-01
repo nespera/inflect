@@ -51,6 +51,8 @@ trait Inflector {
     number + suffix(number)
   }
 
+  def textOrdinal(number: Long) = ordinal(cardinal(number))
+
   def ordinal (number: String) = {
 
     val patterns = List("one$" -> "first", "two$" -> "second", "three$" -> "third",

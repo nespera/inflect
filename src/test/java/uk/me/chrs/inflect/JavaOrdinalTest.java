@@ -12,5 +12,6 @@ public class JavaOrdinalTest {
     assertEquals("7th", ordinal(7));
     assertEquals("9000th", ordinal(9000l));
     assertEquals("twenty-first", ordinal("twenty-one"));
+    assertEquals("seventy-first", textOrdinal(71));
   }
 }

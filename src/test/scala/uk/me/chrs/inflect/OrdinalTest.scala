@@ -84,6 +84,11 @@ class OrdinalTest extends FunSuite {
 
   test("Using the th method and implicit conversion for string ordinals") {
     import ImplicitConversions._
-    assert("five".th == "fifth")
+    assert("five".th === "fifth")
+  }
+
+  test("Text ordinals for numbers") {
+    assert("twelfth" === textOrdinal(12))
+    assert("one hundred and first" === textOrdinal(101))
   }
 }

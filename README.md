@@ -46,10 +46,12 @@ import uk.me.chrs.inflect.Inflect._
 
 println("This is your " + ordinal(3) + " attempt")
 println("This is your " + ordinal("five") + " attempt")
+println("While this is your " + textOrdinal(8))
 ```
 
     This is your 3rd attempt
     This is your fifth attempt
+    While this is your eighth
 
 ### Implicit Conversions
 
@@ -104,10 +106,12 @@ static import uk.me.chrs.inflect.Inflect.*
 
 System.out.println("This is your " + ordinal(3) + " attempt")
 System.out.println("This is your " + ordinal("five") + " attempt")
+System.out.println("While this is your " + textOrdinal(8))
 ```
 
     This is your 3rd attempt
     This is your fifth attempt
+    While this is your eighth
 
 ## Customizing the output
 
