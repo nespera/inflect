@@ -1,13 +1,30 @@
 # inflect
 
-I hope to port Damian Conway's Inflect Perl Module (http://search.cpan.org/~dconway/Lingua-EN-Inflect-1.895/) to Scala.
-I also want the resulting library to be usable from both Java and Scala.
+This is a Scala verison of Damian Conway's Inflect Perl Module (http://search.cpan.org/~dconway/Lingua-EN-Inflect-1.895/).
+I hope to add most of the features from that module and I want the resulting library to be usable from both Java and Scala.
 
-I've started out with some simple parts around inflection of numbers. I will then move onto pluralizing nouns and so on..
 
 [![Travis Build](https://api.travis-ci.org/nespera/inflect.png)](https://travis-ci.org/nespera/inflect)
 
 ## Scala Usage
+
+### Pluralizing Nouns
+
+```scala
+import uk.me.chrs.inflect.Inflect._
+
+//Unconditional plural
+println("I see dead " + plural("person"))
+
+//Conditional plural
+val cakes = 1
+val pies = 2
+println("The picnic contains " + cakes + " " + plural("cake", cakes) + " and " + pies + " " + plural("pie", pies)
+```
+
+    I see dead people
+    The picnice contains 1 cake and 2 pies
+
 
 ### Numbers in words
 
@@ -53,6 +70,19 @@ println("Welcome customer " + customerNumber.inWords)
     Welcome customer seven hundred and eighty-nine
 
 ## Java Usage
+
+### Pluralizing Nouns
+
+```java
+static import uk.me.chrs.inflect.Inflect.*
+
+System.out.println("Here are your " + plural("photo"))
+val shocks = 1
+System.out.println("Applying electrical " + plural("stimulus", shocks)
+```
+
+    Here are your photos
+    Applying electrical stimulus
 
 ### Numbers in words
 
