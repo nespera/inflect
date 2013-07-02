@@ -40,7 +40,15 @@ class PluralTest extends FunSuite {
       "squid" -> "squid",
       "aircraft" -> "aircraft",
       "hovercraft" -> "hovercraft",
-      "giant squid" -> "giant squid")
+      "giant squid" -> "giant squid",
+      "chamois" -> "chamois",
+      "waterfowl" -> "waterfowl",
+      "haggis" -> "haggis",
+      "sea-bass" -> "sea-bass",
+      "cod" -> "cod",
+      "portuguese" -> "portuguese",
+      "small pox" -> "small pox",
+      "samurai" -> "samurai")
     check(examples)
   }
 
@@ -83,11 +91,7 @@ class PluralTest extends FunSuite {
       "rhino" -> "rhinos",
       "stomach" -> "stomachs",
       "german" -> "germans",
-      "savoury" -> "savouries",
-      "chamois" -> "chamois",
-      "waterfowl" -> "waterfowl",
-      "haggis" -> "haggis"
-    )
+      "savoury" -> "savouries")
     check(examples)
   }
 

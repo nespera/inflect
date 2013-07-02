@@ -220,6 +220,19 @@
 \bsnipe,snipe
 \bteal,teal
 \bturbot,turbot
+\btuna,tuna
+\bbream,bream
+\b(sea[- ]bass),$1
+\bcarp,carp
+\bcod,cod
+\bflounder,flounder
+\bwhiting,whiting
+\bgraffiti,graffiti
+\bsamurai,samurai
+\boffspring,offspring
+\bpence,pence
+\bquid,quid
+\bhertz,hertz
 #
 # These match whole line
 #
@@ -235,3 +248,5 @@
 (.*radi)us,$1i
 .*measles,$0
 .*fowl,$0
+.*ese,$0
+.*pox,$0
