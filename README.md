@@ -18,11 +18,11 @@ println("I see dead " + plural("person"))
 
 //Conditional plural
 val pies = 2
-println("The picnic contains " + cakes + " " + plural("cake", cakes) +
-  ", " + pies + " " + plural("pie", pies)
+println("The picnic contains " + cakes + " " + plural(cakes, "cake") +
+  ", " + pies + " " + plural(pies, "pie")
 
 //Simplify the above
-println("The picnic contains " + count("sweet", cakes) + ", " + count("savoury", pies)
+println("The picnic contains " + count(cakes, "sweet") + ", " + count(pies, "savoury")
 
 ```
 
@@ -84,7 +84,7 @@ static import uk.me.chrs.inflect.Inflect.*
 
 System.out.println("Here are your " + plural("photo"))
 val shocks = 1
-System.out.println("Applying electrical " + plural("stimulus", shocks)
+System.out.println("Applying electrical " + plural(shocks, "stimulus")
 System.out.println("I ate " + count(7, "muffin")
 ```
 

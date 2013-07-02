@@ -29,11 +29,11 @@ trait Inflector {
     singular.replaceAll(replace._1+"$", replace._2)
   }
 
-  def plural (singular: String, count: Long): String = {
+  def plural (count: Long, singular: String): String = {
     if (count == 1) singular else plural(singular)
   }
 
-  def count(number: Long, singular: String) = "" + number + " " + plural(singular, number)
+  def count(number: Long, singular: String) = "" + number + " " + plural(number, singular)
 
   def ordinal (number: Long) = {
 

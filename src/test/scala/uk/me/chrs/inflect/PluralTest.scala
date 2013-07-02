@@ -87,9 +87,9 @@ class PluralTest extends FunSuite {
   }
 
   test("conditional plurals") {
-    assert(plural("ox", 0) === "oxen")
-    assert(plural("ox", 1) === "ox")
-    assert(plural("ox", 2) === "oxen")
+    assert(plural(0, "ox") === "oxen")
+    assert(plural(1, "ox") === "ox")
+    assert(plural(2, "ox") === "oxen")
   }
 
   test("count plurals") {
