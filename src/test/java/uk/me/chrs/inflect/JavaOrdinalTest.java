@@ -13,5 +13,6 @@ public class JavaOrdinalTest {
     assertEquals("9000th", ordinal(9000l));
     assertEquals("twenty-first", ordinal("twenty-one"));
     assertEquals("seventy-first", textOrdinal(71));
+    assertEquals("8 typos", count(8, "typo"));
   }
 }

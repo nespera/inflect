@@ -33,6 +33,8 @@ trait Inflector {
     if (count == 1) singular else plural(singular)
   }
 
+  def count(number: Long, singular: String) = "" + number + " " + plural(singular, number)
+
   def ordinal (number: Long) = {
 
     def digitSuffix(digit: Int): String = {

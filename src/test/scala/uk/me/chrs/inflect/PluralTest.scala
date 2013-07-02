@@ -92,6 +92,12 @@ class PluralTest extends FunSuite {
     assert(plural("ox", 2) === "oxen")
   }
 
+  test("count plurals") {
+    assert(count(0, "box") === "0 boxes")
+    assert(count(1, "box") === "1 box")
+    assert(count(7, "box") === "7 boxes")
+  }
+
   def check(examples: List[(String, String)]) {
     for ((s, p) <- examples) {
       assert(plural(s) === p)
