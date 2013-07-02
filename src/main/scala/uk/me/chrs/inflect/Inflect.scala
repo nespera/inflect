@@ -6,19 +6,20 @@ trait Inflector {
 
   def loadSpecialCases: List[(String, String)] = {
     val stream = io.Source.fromInputStream(getClass.getResourceAsStream("special-plurals.txt"))
-    stream.getLines().toList.map((x) => x.split(",", 2)).map((x) => (x(0), x(1)))
+    stream.getLines().filterNot(_.startsWith("#")).toList.map((x) => x.split(",", 2)).map((x) => (x(0), x(1)))
   }
 
   val specialCases: List[(String, String)] = loadSpecialCases
 
   val rules: List[(String, String)] = List(
     "[ie]x" -> "ices",
+    "ois" -> "ois",
+    "ies" -> "ies",
     "is" -> "es",
     "quy" -> "quies",
     "([aeou]y)" -> "$1s",
     "y" -> "ies",
     "(ff|oo)" -> "$1s",
-    "ies" -> "ies",
     "(o|s|x|ch|sh)" -> "$1es",
     "fe?" -> "ves",
     "z?z" -> "zzes")

@@ -81,7 +81,12 @@ class PluralTest extends FunSuite {
       "stratum" -> "strata",
       "criterion" -> "criteria",
       "rhino" -> "rhinos",
-      "stomach" -> "stomachs"
+      "stomach" -> "stomachs",
+      "german" -> "germans",
+      "savoury" -> "savouries",
+      "chamois" -> "chamois",
+      "waterfowl" -> "waterfowl",
+      "haggis" -> "haggis"
     )
     check(examples)
   }
