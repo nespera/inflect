@@ -34,6 +34,17 @@ trait Inflector {
     if (count == 1) singular else plural(singular)
   }
 
+  /* Special cases:
+  eucalyptus, Eucharist, euchre, eulogy, eunuch, euphemism, euphoria, eureka, Euro, Europe, European,
+  euthanasia, ewe, Uganda, ukelele, Ukraine, UN, unanimous, unicorn, uniform, unilateral, union, unique,
+  unison, unit, unite, united, unity, universal, universe, university, urethane, urinal, urinate, urine,
+  urologist, urology, Uruguay, USA, use, used, useful, user, USSR, usual, usually, uterus, utilise, utility
+  one, once
+
+  heir, heirs, heiress, heirloom, herb (US only), hommage, honest, honesty, honestly, honour,
+  honourable, honourably, hour, hours, hourly
+   */
+
   def a(noun: String): String =  {
     val Vowel = "^[aeiou].*".r
     noun match {
