@@ -34,6 +34,16 @@ trait Inflector {
     if (count == 1) singular else plural(singular)
   }
 
+  def a(noun: String): String =  {
+    val Vowel = "^[aeiou].*".r
+    noun match {
+      case Vowel() => "an " + noun
+      case _ => "a " + noun
+    }
+  }
+
+  def an(noun: String): String = a(noun)
+
   def count(number: Long, singular: String) = "" + number + " " + plural(number, singular)
 
   def ordinal (number: Long) = {
