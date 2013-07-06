@@ -27,4 +27,11 @@ class IndefiniteArticleTest extends FunSuite {
     assert(a("one-off") === "a one-off")
   }
 
+  test("handle numbers") {
+    assert(a("8-man crew") === "an 8-man crew")
+    assert(a("6 legged beast") === "a 6 legged beast")
+    assert(a("11-a-side tournament") === "an 11-a-side tournament")
+    assert(an("1 man show") === "a 1 man show")
+  }
+
 }
