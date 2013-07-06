@@ -40,13 +40,14 @@ trait Inflector {
   urologist, urology, Uruguay, USA, use, used, useful, user, USSR, usual, usually, uterus, utilise, utility
   one, once
 
-  heir, heirs, heiress, heirloom, herb (US only), hommage, honest, honesty, honestly, honour,
-  honourable, honourably, hour, hours, hourly
+  herb (US only)
    */
   private def vowelSound(noun: String) = {
-    val Vowel = "^[aeiou].*".r
+    val SilentH = "^h(?:eir|ono|our|onest|ommage).*".r
     val YSound = "^e[uw].*".r
+    val Vowel = "^[aeiou].*".r
     noun match {
+      case SilentH() => true
       case YSound() => false
       case Vowel() => true
       case _ => false

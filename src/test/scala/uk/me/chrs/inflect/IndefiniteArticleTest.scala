@@ -15,6 +15,10 @@ class IndefiniteArticleTest extends FunSuite {
   test("exceptions") {
     assert(a("european") === "a european")
     assert(an("ewe") === "a ewe")
+    assert(a("heirloom") === "an heirloom")
+    assert(an("honour") === "an honour")
+    assert(a("hourglass") === "an hourglass")
+    assert(a("honest man") === "an honest man")
   }
 
 }
