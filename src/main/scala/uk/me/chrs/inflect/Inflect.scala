@@ -35,8 +35,7 @@ trait Inflector {
   }
 
   /* Special cases:
-  eucalyptus, Eucharist, euchre, eulogy, eunuch, euphemism, euphoria, eureka, Euro, Europe, European,
-  euthanasia, ewe, Uganda, ukelele, Ukraine, UN, unanimous, unicorn, uniform, unilateral, union, unique,
+  Uganda, ukelele, Ukraine, UN, unanimous, unicorn, uniform, unilateral, union, unique,
   unison, unit, unite, united, unity, universal, universe, university, urethane, urinal, urinate, urine,
   urologist, urology, Uruguay, USA, use, used, useful, user, USSR, usual, usually, uterus, utilise, utility
   one, once
@@ -47,7 +46,9 @@ trait Inflector {
 
   def a(noun: String): String =  {
     val Vowel = "^[aeiou].*".r
+    val YSound = "^e[uw].*".r
     noun match {
+      case YSound() => "a " + noun
       case Vowel() => "an " + noun
       case _ => "a " + noun
     }

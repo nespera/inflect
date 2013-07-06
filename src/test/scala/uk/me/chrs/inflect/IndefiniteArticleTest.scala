@@ -12,4 +12,9 @@ class IndefiniteArticleTest extends FunSuite {
     assert(an("egg") === "an egg")
   }
 
+  test("exceptions") {
+    assert(a("european") === "a european")
+    assert(an("ewe") === "a ewe")
+  }
+
 }
