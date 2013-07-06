@@ -4,7 +4,7 @@ trait Inflector {
 
   def options: Options = Options()
 
-  def loadSpecialCases: List[(String, String)] = {
+  private def loadSpecialCases: List[(String, String)] = {
     val stream = io.Source.fromInputStream(getClass.getResourceAsStream("special-plurals.txt"))
     stream.getLines().filterNot(_.startsWith("#")).toList.map((x) => x.split(",", 2)).map((x) => (x(0), x(1)))
   }
@@ -43,15 +43,17 @@ trait Inflector {
   heir, heirs, heiress, heirloom, herb (US only), hommage, honest, honesty, honestly, honour,
   honourable, honourably, hour, hours, hourly
    */
-
-  def a(noun: String): String =  {
+  private def vowelSound(noun: String) = {
     val Vowel = "^[aeiou].*".r
     val YSound = "^e[uw].*".r
     noun match {
-      case YSound() => "a " + noun
-      case Vowel() => "an " + noun
-      case _ => "a " + noun
+      case YSound() => false
+      case Vowel() => true
+      case _ => false
     }
+  }
+  def a(noun: String): String =  {
+    (if (vowelSound(noun)) "an" else "a") + " " + noun
   }
 
   def an(noun: String): String = a(noun)
