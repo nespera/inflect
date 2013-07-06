@@ -39,7 +39,7 @@ val insect = "bee"
 println("That is " + an(insect))
 val person = "european"
 println("He is " + a(person))
-println("It was " + a("8 legged creature))
+println("It was " + a("8 legged creature"))
 ```
 
     That is a bee
