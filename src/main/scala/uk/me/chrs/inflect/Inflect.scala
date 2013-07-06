@@ -35,20 +35,22 @@ trait Inflector {
   }
 
   /* Special cases:
-  Uganda, ukelele, Ukraine, UN, unanimous, unicorn, uniform, unilateral, union, unique,
-  unison, unit, unite, united, unity, universal, universe, university, urethane, urinal, urinate, urine,
-  urologist, urology, Uruguay, USA, use, used, useful, user, USSR, usual, usually, uterus, utilise, utility
+  Uganda, ukelele, Ukraine, UN, unanimous, urethane, Uruguay, USA, USSR, uterus, utilise, utility
   one, once
 
   herb (US only)
    */
   private def vowelSound(noun: String) = {
+    val YSoundingU = ("^u(?:nicorn|niform|nilateral|nion|nique|" +
+      "nison|nit\\b|unite|unity|nivers|s[aeu]|rol|rin|" +
+      "kelele|ganda|krain|nanim|rethane|rugua|ter|tili).*").r
     val SilentH = "^h(?:eir|ono|our|onest|ommage).*".r
-    val YSound = "^e[uw].*".r
+    val YSoundingE = "^e[uw].*".r
     val Vowel = "^[aeiou].*".r
     noun match {
+      case YSoundingU() => false
       case SilentH() => true
-      case YSound() => false
+      case YSoundingE() => false
       case Vowel() => true
       case _ => false
     }
