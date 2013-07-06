@@ -29,6 +29,22 @@ println("The picnic contains " + count(cakes, "sweet") + ", " + count(pies, "sav
     I see dead people
     The picnic contains 1 cake, 2 pies
     The picnic contains 1 sweet, 2 savouries
+    
+### Adding indefinite article
+
+```scala
+import uk.me.chrs.inflect.Inflect._
+
+val insect = "bee"
+println("That is " + an(insect))
+val person = "european"
+println("He is " + a(person))
+println("It was " + a("8 legged creature))
+```
+
+    That is a bee
+    He is a european
+    It was an 8 legged beast
 
 ### Numbers in words
 
@@ -39,7 +55,12 @@ println("You are customer number " + cardinal(78))
 println("This year's budget is " + cardinal("89000000000") + " dollars")
 ```
 
-    You are customer number seventy-eight
+
+    That is a bee
+    He is a european
+    It was an 8 legged beast
+
+You are customer number seventy-eight
     This year's budget is eighty-nine billion dollars
 
 ### Ordinals
