@@ -24,6 +24,7 @@ class IndefiniteArticleTest extends FunSuite {
     assert(an("university") === "a university")
     assert(a("user") === "a user")
     assert(an("uruguayan") === "a uruguayan")
+    assert(a("one-off") === "a one-off")
   }
 
 }

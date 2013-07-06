@@ -34,23 +34,21 @@ trait Inflector {
     if (count == 1) singular else plural(singular)
   }
 
-  /* Special cases:
-  Uganda, ukelele, Ukraine, UN, unanimous, urethane, Uruguay, USA, USSR, uterus, utilise, utility
-  one, once
-
-  herb (US only)
+  /* Special case: herb (US only)
    */
   private def vowelSound(noun: String) = {
     val YSoundingU = ("^u(?:nicorn|niform|nilateral|nion|nique|" +
       "nison|nit\\b|unite|unity|nivers|s[aeu]|rol|rin|" +
       "kelele|ganda|krain|nanim|rethane|rugua|ter|tili).*").r
-    val SilentH = "^h(?:eir|ono|our|onest|ommage).*".r
     val YSoundingE = "^e[uw].*".r
+    val WSoundingO = "on(?:e|ce)\\b.*".r
+    val SilentH = "^h(?:eir|ono|our|onest|ommage).*".r
     val Vowel = "^[aeiou].*".r
     noun match {
       case YSoundingU() => false
-      case SilentH() => true
       case YSoundingE() => false
+      case WSoundingO() => false
+      case SilentH() => true
       case Vowel() => true
       case _ => false
     }
