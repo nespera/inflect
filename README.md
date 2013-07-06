@@ -55,12 +55,7 @@ println("You are customer number " + cardinal(78))
 println("This year's budget is " + cardinal("89000000000") + " dollars")
 ```
 
-
-    That is a bee
-    He is a european
-    It was an 8 legged beast
-
-You are customer number seventy-eight
+    You are customer number seventy-eight
     This year's budget is eighty-nine billion dollars
 
 ### Ordinals
