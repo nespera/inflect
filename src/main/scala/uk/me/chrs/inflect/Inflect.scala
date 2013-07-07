@@ -39,13 +39,13 @@ trait Inflector {
   private def vowelSound(noun: String): Boolean = {
     val AllCapitals = "^([A-Z])[^a-z]*\\b.*".r
     val StartsWithNumber = "^([0-9]+).*".r
-    val YSoundingU = ("^u(?:nicorn|niform|nilateral|nion|nique|" +
+    val YSoundingU = ("^[uU](?:nicorn|niform|nilateral|nion|nique|" +
       "nison|nit\\b|unite|unity|nivers|s[aeu]|rol|rin|" +
       "kelele|ganda|krain|nanim|rethane|rugua|ter|tili).*").r
-    val YSoundingE = "^e[uw].*".r
-    val WSoundingO = "on(?:e|ce)\\b.*".r
-    val SilentH = "^h(?:eir|ono|our|onest|ommage).*".r
-    val Vowel = "^[aeiou].*".r
+    val YSoundingE = "^[eE][uw].*".r
+    val WSoundingO = "[oO]n(?:e|ce)\\b.*".r
+    val SilentH = "^[hH](?:eir|ono|our|onest|ommage).*".r
+    val Vowel = "^[aeiouAEIOU].*".r
     noun match {
       case AllCapitals(initial) => "AEFILMNORSX".contains(initial)
       case StartsWithNumber(n) => vowelSound(cardinal(n.toLong))

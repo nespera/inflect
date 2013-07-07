@@ -40,4 +40,12 @@ class IndefiniteArticleTest extends FunSuite {
     assert(a("US citizen") === "a US citizen")
   }
 
+  test("handle capitalized words") {
+    assert(a("Hourly show") === "an Hourly show")
+    assert(a("Union member") === "a Union member")
+    assert(a("Euro") === "a Euro")
+    assert(a("One Way Ticket") === "a One Way Ticket")
+    assert(a("Orangeman") === "an Orangeman")
+  }
+
 }
