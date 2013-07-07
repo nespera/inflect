@@ -36,15 +36,17 @@ println("The picnic contains " + count(cakes, "sweet") + ", " + count(pies, "sav
 import uk.me.chrs.inflect.Inflect._
 
 val insect = "bee"
-println("That is " + an(insect))
-val person = "european"
-println("He is " + a(person))
-println("It was " + a("8 legged creature"))
+println("That is " + one(insect))
+val person = "European"
+println("He is " + one(person))
+println("It was " + one("8 legged creature"))
+println("He works for " + one("NGO"))
 ```
 
     That is a bee
-    He is a european
+    He is a European
     It was an 8 legged beast
+    He works for an NGO
 
 ### Numbers in words
 
@@ -107,6 +109,16 @@ System.out.println("I ate " + count(7, "muffin")
     Here are your photos
     Applying electrical stimulus
     I ate 7 muffins
+
+### Indefinite Article
+
+```java
+static import uk.me.chrs.inflect.Inflect.*
+
+System.out.println("That is " + one("XML document"))
+```
+
+    That is an XML document
 
 ### Numbers in words
 

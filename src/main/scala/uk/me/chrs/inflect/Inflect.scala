@@ -57,11 +57,9 @@ trait Inflector {
       case _ => false
     }
   }
-  def a(noun: String): String =  {
+  def one(noun: String): String =  {
     (if (vowelSound(noun)) "an" else "a") + " " + noun
   }
-
-  def an(noun: String): String = a(noun)
 
   def count(number: Long, singular: String) = "" + number + " " + plural(number, singular)
 

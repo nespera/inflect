@@ -6,46 +6,44 @@ import uk.me.chrs.inflect.Inflect._
 class IndefiniteArticleTest extends FunSuite {
 
   test("basic tests") {
-    assert(a("box") === "a box")
-    assert(a("egg") === "an egg")
-    assert(an("box") === "a box")
-    assert(an("egg") === "an egg")
+    assert(one("box") === "a box")
+    assert(one("egg") === "an egg")
   }
 
   test("exceptions") {
-    assert(a("european") === "a european")
-    assert(an("ewe") === "a ewe")
-    assert(a("heirloom") === "an heirloom")
-    assert(an("honour") === "an honour")
-    assert(a("hourglass") === "an hourglass")
-    assert(a("honest man") === "an honest man")
-    assert(an("unicorn") === "a unicorn")
-    assert(an("unit") === "a unit")
-    assert(an("university") === "a university")
-    assert(a("user") === "a user")
-    assert(an("uruguayan") === "a uruguayan")
-    assert(a("one-off") === "a one-off")
+    assert(one("european") === "a european")
+    assert(one("ewe") === "a ewe")
+    assert(one("heirloom") === "an heirloom")
+    assert(one("honour") === "an honour")
+    assert(one("hourglass") === "an hourglass")
+    assert(one("honest man") === "an honest man")
+    assert(one("unicorn") === "a unicorn")
+    assert(one("unit") === "a unit")
+    assert(one("university") === "a university")
+    assert(one("user") === "a user")
+    assert(one("uruguayan") === "a uruguayan")
+    assert(one("one-off") === "a one-off")
   }
 
   test("handle numbers") {
-    assert(a("8-man crew") === "an 8-man crew")
-    assert(a("6 legged beast") === "a 6 legged beast")
-    assert(a("11-a-side tournament") === "an 11-a-side tournament")
-    assert(an("1 man show") === "a 1 man show")
+    assert(one("8-man crew") === "an 8-man crew")
+    assert(one("6 legged beast") === "a 6 legged beast")
+    assert(one("11-a-side tournament") === "an 11-a-side tournament")
+    assert(one("1 man show") === "a 1 man show")
   }
 
   test("handle acronyms") {
-    assert(a("NGO") === "an NGO")
-    assert(a("XML document") === "an XML document")
-    assert(a("US citizen") === "a US citizen")
+    assert(one("NGO") === "an NGO")
+    assert(one("XML document") === "an XML document")
+    assert(one("US citizen") === "a US citizen")
   }
 
   test("handle capitalized words") {
-    assert(a("Hourly show") === "an Hourly show")
-    assert(a("Union member") === "a Union member")
-    assert(a("Euro") === "a Euro")
-    assert(a("One Way Ticket") === "a One Way Ticket")
-    assert(a("Orangeman") === "an Orangeman")
+    assert(one("Hourly show") === "an Hourly show")
+    assert(one("Union member") === "a Union member")
+    assert(one("Euro") === "a Euro")
+    assert(one("One Way Ticket") === "a One Way Ticket")
+    assert(one("Orangeman") === "an Orangeman")
   }
 
 }
