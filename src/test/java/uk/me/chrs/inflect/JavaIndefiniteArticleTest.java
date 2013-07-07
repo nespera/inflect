@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-import static uk.me.chrs.inflect.Inflect.one;
+import static uk.me.chrs.inflect.Inflect_EN.one;
 
 public class JavaIndefiniteArticleTest {
 

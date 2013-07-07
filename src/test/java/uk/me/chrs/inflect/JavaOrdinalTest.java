@@ -3,7 +3,7 @@ package uk.me.chrs.inflect;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static uk.me.chrs.inflect.Inflect.*;
+import static uk.me.chrs.inflect.Inflect_EN.*;
 
 public class JavaOrdinalTest {
 

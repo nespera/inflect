@@ -1,7 +1,7 @@
 package uk.me.chrs.inflect
 
 import org.scalatest.FunSuite
-import Inflect._
+import Inflect_EN._
 
 class CardinalTest extends FunSuite {
 

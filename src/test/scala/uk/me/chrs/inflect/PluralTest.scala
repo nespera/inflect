@@ -1,6 +1,6 @@
 package uk.me.chrs.inflect
 
-import uk.me.chrs.inflect.Inflect._
+import uk.me.chrs.inflect.Inflect_EN._
 import org.scalatest.FunSuite
 
 class PluralTest extends FunSuite {

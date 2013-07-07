@@ -141,9 +141,13 @@ trait Inflector {
 
 }
 
-object Inflect extends Inflector
-
 class CustomInflector(override val options: Options) extends Inflector
 
+object Inflect_EN extends CustomInflector(Options())
+object Inflect_EN_US extends CustomInflector(Options(andSeparator = ""))
+object Inflect_EN_GB extends CustomInflector(Options())
+
 //Java Interoperability
-class Inflect {}
+class Inflect_EN {}
+class Inflect_EN_US {}
+class Inflect_EN_GB {}

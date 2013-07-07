@@ -1,7 +1,7 @@
 package uk.me.chrs.inflect
 
 import org.scalatest.FunSuite
-import uk.me.chrs.inflect.Inflect._
+import uk.me.chrs.inflect.Inflect_EN._
 
 class IndefiniteArticleTest extends FunSuite {
 

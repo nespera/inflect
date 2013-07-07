@@ -4,8 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-import static uk.me.chrs.inflect.Inflect.count;
-import static uk.me.chrs.inflect.Inflect.plural;
+import static uk.me.chrs.inflect.Inflect_EN.*;
 
 public class JavaPluralTest {
 
