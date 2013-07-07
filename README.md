@@ -1,7 +1,8 @@
 # inflect
 
 This is a Scala verison of Damian Conway's Inflect Perl Module (http://search.cpan.org/~dconway/Lingua-EN-Inflect-1.895/).
-I hope to add most of the features from that module and I want the resulting library to be usable from both Java and Scala.
+I hope to add most of the features from that module and I want 
+the resulting library to also be [usable from Java](#java-usage).
 
 
 [![Travis Build](https://api.travis-ci.org/nespera/inflect.png)](https://travis-ci.org/nespera/inflect)
