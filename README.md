@@ -11,7 +11,7 @@ I hope to add most of the features from that module and I want the resulting lib
 ### Pluralizing Nouns
 
 ```scala
-import uk.me.chrs.inflect.Inflect._
+import uk.me.chrs.inflect.Inflect_EN._
 
 //Unconditional plural
 println("I see dead " + plural("person"))
