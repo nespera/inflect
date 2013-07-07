@@ -37,6 +37,7 @@ trait Inflector {
   /* Special case: herb (US only)
    */
   private def vowelSound(noun: String): Boolean = {
+    val AllCapitals = "^([A-Z])[^a-z]*\\b.*".r
     val StartsWithNumber = "^([0-9]+).*".r
     val YSoundingU = ("^u(?:nicorn|niform|nilateral|nion|nique|" +
       "nison|nit\\b|unite|unity|nivers|s[aeu]|rol|rin|" +
@@ -46,6 +47,7 @@ trait Inflector {
     val SilentH = "^h(?:eir|ono|our|onest|ommage).*".r
     val Vowel = "^[aeiou].*".r
     noun match {
+      case AllCapitals(initial) => "AEFILMNORSX".contains(initial)
       case StartsWithNumber(n) => vowelSound(cardinal(n.toLong))
       case YSoundingU() => false
       case YSoundingE() => false

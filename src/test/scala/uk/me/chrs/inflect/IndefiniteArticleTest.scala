@@ -34,4 +34,10 @@ class IndefiniteArticleTest extends FunSuite {
     assert(an("1 man show") === "a 1 man show")
   }
 
+  test("handle acronyms") {
+    assert(a("NGO") === "an NGO")
+    assert(a("XML document") === "an XML document")
+    assert(a("US citizen") === "a US citizen")
+  }
+
 }
