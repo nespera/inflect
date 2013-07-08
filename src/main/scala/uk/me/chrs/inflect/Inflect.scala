@@ -34,9 +34,7 @@ trait Inflector {
     if (count == 1) singular else plural(singular)
   }
 
-  /* Special case: herb (US only)
-   */
-  private def vowelSound(noun: String): Boolean = {
+  protected def vowelSound(noun: String): Boolean = {
     val AllCapitals = "^([A-Z])[^a-z]*\\b.*".r
     val StartsWithNumber = "^([0-9]+).*".r
     val YSoundingU = ("^[uU](?:nicorn|niform|nilateral|nion|nique|" +
@@ -144,7 +142,11 @@ trait Inflector {
 class CustomInflector(override val options: Options) extends Inflector
 
 object Inflect_EN extends CustomInflector(Options())
-object Inflect_EN_US extends CustomInflector(Options(andSeparator = ""))
+object Inflect_EN_US extends CustomInflector(Options(andSeparator = "")) {
+  override def vowelSound(noun: String): Boolean = {
+    if (noun.matches("^[Hh]erb(?:\\b|al).*")) true else super.vowelSound(noun)
+  }
+}
 object Inflect_EN_GB extends CustomInflector(Options())
 
 //Java Interoperability
