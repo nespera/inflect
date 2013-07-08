@@ -75,7 +75,7 @@ println("While this is your " + textOrdinal(8))
     This is your fifth attempt
     While this is your eighth
 
-## Choosing the locale
+### Choosing the locale
 
 The output defaults to British English, since I'm a Brit. But you can make this explicit, or use US variants by
 making the relevant imports
