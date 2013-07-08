@@ -5,7 +5,7 @@ trait Inflector {
   def options: Options = Options()
 
   private def loadSpecialCases: List[(String, String)] = {
-    val stream = io.Source.fromInputStream(getClass.getResourceAsStream("special-plurals.txt"))
+    val stream = io.Source.fromInputStream(getClass.getResourceAsStream("special-noun-plurals.txt"))
     stream.getLines().filterNot(_.startsWith("#")).toList.map((x) => x.split(",", 2)).map((x) => (x(0), x(1)))
   }
 
