@@ -83,19 +83,39 @@ trait Inflector {
 
   def ordinal (number: String) = {
 
-    val patterns = List("one$" -> "first", "two$" -> "second", "three$" -> "third",
-                        "ve$" -> "fth", "eight$" -> "eighth", "nine$" -> "ninth", "ty$" -> "tieth")
-
-    def replaceSuffix(p: List[(String, String)]): String = {
-      p match {
-        case x :: xs => if (number.matches(".*" + x._1))
-            x._1.r.replaceFirstIn(number, x._2)
-          else replaceSuffix(xs)
-        case _ => number + "th"
+    def splitOffLastWord(words: String): (String, String) = {
+      val Split = "(.*)\\b(\\w+)$".r
+      words match {
+        case Split(h, t) => (h, t)
+        case _ => ("", words)
       }
     }
 
-    replaceSuffix(patterns)
+    val patterns = List("one$" -> "first", "two$" -> "second", "three$" -> "third",
+                        "([a-z]*)ve$" -> "$1fth", "eight$" -> "eighth",
+                        "nine$" -> "ninth", "([a-z]*)ty$" -> "$1tieth")
+
+    def replaceSuffix(word: String, p: List[(String, String)] = patterns): String = {
+      p match {
+        case x :: xs => if (word.toLowerCase.matches(x._1))
+            x._1.r.replaceFirstIn(word.toLowerCase, x._2)
+          else replaceSuffix(word, xs)
+        case _ => word + "th"
+      }
+    }
+
+    def matchCase(original: String, replaced: String): String = {
+      val AllCaps = "^[A-Z]+$".r
+      val Capitalized = "^[A-Z][a-z]*$".r
+      original match {
+        case AllCaps() => replaced.toUpperCase
+        case Capitalized() => replaced.capitalize
+        case _ => replaced
+      }
+    }
+
+    val (head, tail) = splitOffLastWord(number)
+    head + matchCase(tail, replaceSuffix(tail))
   }
 
   def cardinal (number: Long): String = {

@@ -82,6 +82,15 @@ class OrdinalTest extends FunSuite {
     assert(ordinal("one hundred and three") === "one hundred and third")
   }
 
+  test("string ordinals with mixed and upper case") {
+    assert(ordinal("ONE") === "FIRST")
+    assert(ordinal("hundred and TWO") === "hundred and SECOND")
+    assert(ordinal("Sixty-One") === "Sixty-First")
+    assert(ordinal("Hundred and six") === "Hundred and sixth")
+    assert(ordinal("Three") === "Third")
+    assert(ordinal("Eighty Seven") === "Eighty Seventh")
+  }
+
   test("Using the th method and implicit conversion for string ordinals") {
     import ImplicitConversions._
     assert("five".th === "fifth")
