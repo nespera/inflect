@@ -43,11 +43,6 @@ class OrdinalTest extends FunSuite {
     assert(ordinal(123456789000000000l) === "123456789000000000th")
   }
 
-  test("Using the th method and implicit conversion for numeric ordinals") {
-    import ImplicitConversions._
-    assert(1.th == "1st")
-  }
-
   test("string ordinals") {
     assert(ordinal("zero") === "zeroth")
     assert(ordinal("one") === "first")
@@ -89,11 +84,6 @@ class OrdinalTest extends FunSuite {
     assert(ordinal("Hundred and six") === "Hundred and sixth")
     assert(ordinal("Three") === "Third")
     assert(ordinal("Eighty Seven") === "Eighty Seventh")
-  }
-
-  test("Using the th method and implicit conversion for string ordinals") {
-    import ImplicitConversions._
-    assert("five".th === "fifth")
   }
 
   test("Text ordinals for numbers") {
