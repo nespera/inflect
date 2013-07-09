@@ -125,7 +125,7 @@ trait Inflector {
                         "([a-z]*)ve$" -> "$1fth", "eight$" -> "eighth",
                         "nine$" -> "ninth", "([a-z]*)ty$" -> "$1tieth")
 
-    def replaceSuffix(word: String, p: List[(String, String)] = patterns): String = {
+    def replaceSuffix(word: String, p: List[(String, String)]): String = {
       p match {
         case x :: xs => if (word.toLowerCase.matches(x._1))
             x._1.r.replaceFirstIn(word.toLowerCase, x._2)
@@ -145,7 +145,7 @@ trait Inflector {
     }
 
     val (head, tail) = splitOffLastWord(number)
-    head + matchCase(tail, replaceSuffix(tail))
+    head + matchCase(tail, replaceSuffix(tail, patterns))
   }
 
   def cardinal (number: Long): String = {
