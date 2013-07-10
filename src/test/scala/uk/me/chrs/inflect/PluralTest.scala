@@ -107,6 +107,13 @@ class PluralTest extends FunSuite {
     assert(count(7, "box") === "7 boxes")
   }
 
+  test("some nouns") {
+    assert(some(0, "fox") === "no foxes")
+    assert(some(0, "fox", zero="") === "foxes")
+    assert(some(1, "fox") === "a fox")
+    assert(some(2, "fox") === "foxes")
+  }
+
   def check(examples: List[(String, String)]) {
     for ((s, p) <- examples) {
       assert(plural(s) === p)

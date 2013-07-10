@@ -22,6 +22,7 @@ public class JavaPluralTest {
         assertEquals("vertex", plural(1, "vertex"));
         assertEquals("vertices", plural(8, "vertex"));
         assertEquals("8 typos", count(8, "typo"));
+        assertEquals("no buses", some(0, "bus"));
     }
 
 }

@@ -34,6 +34,18 @@ trait Inflector {
     if (count == 1) singular else plural(singular)
   }
 
+  def count(number: Long, singular: String) = "" + number + " " + plural(number, singular)
+
+  def some(number: Long, singular: String): String = some(number, singular, Inflector.defaultZero)
+
+  def some(number: Long, singular: String, zero: String = Inflector.defaultZero) = {
+    number match {
+      case 0 => zero + (if (zero.isEmpty) "" else " ") + plural(singular)
+      case 1 => one(singular)
+      case _ => plural(singular)
+    }
+  }
+
   protected def vowelSound(noun: String): Boolean = {
     val AllCapitals = "^([A-Z])[^a-z]*\\b.*".r
     val StartsWithNumber = "^([0-9]+).*".r
@@ -58,8 +70,6 @@ trait Inflector {
   def one(noun: String): String =  {
     (if (vowelSound(noun)) "an" else "a") + " " + noun
   }
-
-  def count(number: Long, singular: String) = "" + number + " " + plural(number, singular)
 
   def ordinal (number: Long) = {
 
@@ -157,6 +167,45 @@ trait Inflector {
 
   def cardinal (number: String): String = cardinal(number.toLong)
 
+  def using(number: Int) = new InflectionBuilder(number, this)
+}
+
+class InflectionBuilder(val number: Int, val inflector: Inflector) {
+
+  var output: String = ""
+
+  def count(singular: String) = {
+    output += inflector.count(number, singular)
+    this
+  }
+
+  def some(singular: String, zero: String = Inflector.defaultZero) = {
+    output += inflector.some(number, singular, zero)
+    this
+  }
+
+  def some(singular: String) = {
+    output += inflector.some(number, singular)
+    this
+  }
+
+  def plural(singular: String) = {
+    output += inflector.plural(number, singular)
+    this
+  }
+
+  def and(text: String) = apply(text)
+
+  def apply(text: String) = {
+    output += text
+    this
+  }
+
+  override def toString: String = output
+}
+
+object Inflector {
+  val defaultZero = "no"
 }
 
 class CustomInflector(override val options: Options) extends Inflector
