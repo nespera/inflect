@@ -98,7 +98,7 @@ println("Your score is " + uk.me.chrs.inflect.Inflect_EN_US.cardinal(-6007))
 ```
 
     Your score is minus six thousand and seven
-    Your score is negative six thousand seven
+    Your score is minus six thousand seven
 
 ## Java Usage
 
