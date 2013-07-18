@@ -34,16 +34,20 @@ trait Inflector {
     if (count == 1) singular else plural(singular)
   }
 
-  def count(number: Long, singular: String) = "" + number + " " + plural(number, singular)
+  def count(number: Long, singular: String) = join("" + number, plural(number, singular))
 
   def some(number: Long, singular: String): String = some(number, singular, Inflector.defaultZero)
 
-  def some(number: Long, singular: String, zero: String = Inflector.defaultZero) = {
+  def some(number: Long, singular: String, zero: String = Inflector.defaultZero, lone: String = Inflector.defaultOne, many: String = "") = {
     number match {
-      case 0 => zero + (if (zero.isEmpty) "" else " ") + plural(singular)
-      case 1 => one(singular)
-      case _ => plural(singular)
+      case 0 => join(zero, plural(singular))
+      case 1 => if (lone == Inflector.defaultOne) one(singular) else join(lone, singular)
+      case _ => join(many, plural(singular))
     }
+  }
+
+  private def join(words: String*) = {
+    words.filter(_.nonEmpty).mkString(" ")
   }
 
   protected def vowelSound(noun: String): Boolean = {
@@ -67,8 +71,9 @@ trait Inflector {
       case _ => false
     }
   }
+
   def one(noun: String): String =  {
-    (if (vowelSound(noun)) "an" else "a") + " " + noun
+    join(if (vowelSound(noun)) "an" else "a", noun)
   }
 
   def ordinal (number: Long) = {
@@ -162,7 +167,7 @@ trait Inflector {
         doPower(1000000000, "billion")
     }
 
-    if (number < 0) options.minusIndicator + " " + render(-number) else render(number)
+    if (number < 0) join(options.minusIndicator, render(-number)) else render(number)
   }
 
   def cardinal (number: String): String = cardinal(number.toLong)
@@ -206,6 +211,7 @@ class InflectionBuilder(val number: Int, val inflector: Inflector) {
 
 object Inflector {
   val defaultZero = "no"
+  val defaultOne = "a"
 }
 
 class CustomInflector(override val options: Options) extends Inflector
