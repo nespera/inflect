@@ -18,6 +18,7 @@ import uk.me.chrs.inflect.Inflect_EN._
 println("I see dead " + plural("person"))
 
 //Conditional plural
+val cakes = 1
 val pies = 2
 println("The picnic contains " + cakes + " " + plural(cakes, "cake") +
   ", " + pies + " " + plural(pies, "pie")
@@ -42,12 +43,22 @@ val person = "European"
 println("He is " + one(person))
 println("It was " + one("8 legged creature"))
 println("He works for " + one("NGO"))
+
+//Or the following:
+val beers = 0
+val wines = 1
+val snacks = 5
+
+println("I ordered " + some(beers,"beer") + ", " + some(wines,"wine") + " and " + some(snacks,"snack"))
+
 ```
 
     That is a bee
     He is a European
     It was an 8 legged beast
     He works for an NGO
+
+    I ordered no beers, a wine and snacks
 
 ### Numbers in words
 
@@ -94,12 +105,12 @@ println("Your score is " + uk.me.chrs.inflect.Inflect_EN_US.cardinal(-6007))
 ### Pluralizing Nouns
 
 ```java
-static import uk.me.chrs.inflect.Inflect_EN.*
+static import uk.me.chrs.inflect.Inflect_EN.*;
 
-System.out.println("Here are your " + plural("photo"))
-val shocks = 1
-System.out.println("Applying electrical " + plural(shocks, "stimulus")
-System.out.println("I ate " + count(7, "muffin")
+System.out.println("Here are your " + plural("photo"));
+int shocks = 1;
+System.out.println("Applying electrical " + plural(shocks, "stimulus");
+System.out.println("I ate " + count(7, "muffin");
 ```
 
     Here are your photos
@@ -109,20 +120,24 @@ System.out.println("I ate " + count(7, "muffin")
 ### Indefinite Article
 
 ```java
-static import uk.me.chrs.inflect.Inflect_EN.*
+static import uk.me.chrs.inflect.Inflect_EN.*;
 
-System.out.println("That is " + one("XML document"))
+System.out.println("That is " + one("XML document"));
+
+int errors = 0;
+System.out.println("Outcome: " + some(errors, "error")
 ```
 
     That is an XML document
+    Outcome: no errors
 
 ### Numbers in words
 
 ```java
-static import uk.me.chrs.inflect.Inflect_EN.*
+static import uk.me.chrs.inflect.Inflect_EN.*;
 
-System.out.println("You are customer number " + cardinal(78))
-System.out.println("This year's budget is " + cardinal("89000000000") + " dollars")
+System.out.println("You are customer number " + cardinal(78));
+System.out.println("This year's budget is " + cardinal("89000000000") + " dollars");
 ```
 
     You are customer number seventy-eight
@@ -131,11 +146,11 @@ System.out.println("This year's budget is " + cardinal("89000000000") + " dollar
 ### Ordinals
 
 ```java
-static import uk.me.chrs.inflect.Inflect_EN.*
+static import uk.me.chrs.inflect.Inflect_EN.*;
 
-System.out.println("This is your " + ordinal(3) + " attempt")
-System.out.println("This is your " + ordinal("five") + " attempt")
-System.out.println("While this is your " + textOrdinal(8))
+System.out.println("This is your " + ordinal(3) + " attempt");
+System.out.println("This is your " + ordinal("five") + " attempt");
+System.out.println("While this is your " + textOrdinal(8));
 ```
 
     This is your 3rd attempt
