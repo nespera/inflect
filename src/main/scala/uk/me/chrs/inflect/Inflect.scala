@@ -184,8 +184,8 @@ class InflectionBuilder(val number: Int, val inflector: Inflector) {
     this
   }
 
-  def some(singular: String, zero: String = Inflector.defaultZero) = {
-    output += inflector.some(number, singular, zero)
+  def some(singular: String, zero: String = Inflector.defaultZero, lone: String = Inflector.defaultOne, many: String = "") = {
+    output += inflector.some(number, singular, zero, lone, many)
     this
   }
 
