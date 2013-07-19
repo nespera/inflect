@@ -39,16 +39,14 @@ trait Inflector {
   def count(number: Long, singular: String) = join("" + number, plural(number, singular))
   def count(singular:String)(number: Long): String = count(number, singular)
 
-  def some(number: Long, singular: String): String = some(number, singular, Inflector.defaultZero)
-
   def some(singular: String)(number: Long) : String =
     some(number, singular)
 
-  def some(number: Long, singular: String, zero: String = Inflector.defaultZero, lone: String = Inflector.defaultOne, more: String = "") = {
+  def some(number: Long, singular: String) = {
     number match {
-      case 0 => join(zero, many(singular))
-      case 1 => if (lone == Inflector.defaultOne) one(singular) else join(lone, singular)
-      case _ => join(more, many(singular))
+      case 0 => join(options.nonePrefix, many(singular))
+      case 1 => if (options.onePrefix == Options.defaultOne) one(singular) else join(options.onePrefix, singular)
+      case _ => join(options.somePrefix, many(singular))
     }
   }
 
@@ -182,11 +180,6 @@ trait Inflector {
 
 }
 
-object Inflector {
-  val defaultZero = "no"
-  val defaultOne = "a"
-}
-
 object using {
   def apply(num: Long) = new InflectionBuilder(num)
 }
@@ -200,7 +193,7 @@ class InflectionBuilder(num: Long) {
 class CustomInflector(override val options: Options) extends Inflector
 
 object Inflect_EN extends CustomInflector(Options())
-object Inflect_EN_US extends CustomInflector(Options(andSeparator = "")) {
+object Inflect_EN_US extends CustomInflector(Options(and = "")) {
   override def vowelSound(noun: String): Boolean = {
     if (noun.matches("^[Hh]erb(?:\\b|al).*")) true else super.vowelSound(noun)
   }

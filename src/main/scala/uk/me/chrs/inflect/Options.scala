@@ -1,10 +1,21 @@
 package uk.me.chrs.inflect
 
-import scala.beans.BeanProperty
-
-class Options(@BeanProperty val minusIndicator : String,
-              @BeanProperty val andSeparator: String)
+class Options(val minusIndicator : String,
+              val andSeparator: String,
+              val nonePrefix: String,
+              val onePrefix: String,
+              val somePrefix: String)
 
 object Options {
-  def apply(minusIndicator : String = "minus", andSeparator: String = "and") = new Options(minusIndicator, andSeparator)
+
+  val defaultMinus = "minus"
+  val defaultAnd = "and"
+  val defaultNone = "no"
+  val defaultOne = "a"
+
+  def apply(minus : String = defaultMinus,
+            and: String = defaultAnd,
+            none: String = defaultNone,
+            one: String = defaultOne,
+            some: String = "") = new Options(minus, and, none, one, some)
 }

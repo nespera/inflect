@@ -16,7 +16,7 @@ public class JavaCardinalTest {
 
   @Test
   public void canOverrideOptions() {
-    Inflector inflector = new CustomInflector(new Options("negative", ""));
+    Inflector inflector = new CustomInflector(new Options("negative", "", "", "", ""));
     assertEquals("one hundred five", inflector.cardinal(105));
     assertEquals("two thousand nine", inflector.cardinal(2009));
     assertEquals("negative twenty-six", inflector.cardinal(-26));

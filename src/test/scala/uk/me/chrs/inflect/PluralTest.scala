@@ -109,11 +109,17 @@ class PluralTest extends FunSuite {
 
   test("some nouns") {
     assert(some(0, "fox") === "no foxes")
-    assert(some(0, "fox", zero="") === "foxes")
     assert(some(1, "fox") === "a fox")
-    assert(some(1, "fox", lone="one lone") === "one lone fox")
     assert(some(2, "fox") === "foxes")
-    assert(some(2, "fox", more="some") === "some foxes")
+  }
+
+  test("some nouns with custom options") {
+    object MyInflector extends CustomInflector(Options(none="", one="one lone", some="some"))
+    import MyInflector.some
+
+    assert(some(0, "fox") === "foxes")
+    assert(some(1, "fox") === "one lone fox")
+    assert(some(2, "fox") === "some foxes")
   }
 
   def check(examples: List[(String, String)]) {
