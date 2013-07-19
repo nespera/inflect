@@ -12,7 +12,7 @@ class BuilderTest extends FunSuite {
   }
 
   test("can do plural too") {
-    assert("I see " + using(1)(count("door"),and(" on your "),pl("house")) === "I see 1 door on your house")
-    assert("I see " + using(8)(count("door"),and(" on your "),pl("house")) === "I see 8 doors on your houses")
+    assert("I see " + using(1)(count("door"),and(" on your "),plural("house")) === "I see 1 door on your house")
+    assert("I see " + using(8)(count("door"),and(" on your "),plural("house")) === "I see 8 doors on your houses")
   }
 }

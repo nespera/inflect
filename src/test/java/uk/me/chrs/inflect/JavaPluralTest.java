@@ -10,10 +10,10 @@ public class JavaPluralTest {
 
     @Test
     public void unconditionalPlurals() {
-        assertEquals("aircraft", plural("aircraft"));
-        assertEquals("postmen", plural("postman"));
-        assertEquals("skies", plural("sky"));
-        assertEquals("faxes", plural("fax"));
+        assertEquals("aircraft", many("aircraft"));
+        assertEquals("postmen", many("postman"));
+        assertEquals("skies", many("sky"));
+        assertEquals("faxes", many("fax"));
     }
 
     @Test

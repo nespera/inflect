@@ -113,12 +113,12 @@ class PluralTest extends FunSuite {
     assert(some(1, "fox") === "a fox")
     assert(some(1, "fox", lone="one lone") === "one lone fox")
     assert(some(2, "fox") === "foxes")
-    assert(some(2, "fox", many="some") === "some foxes")
+    assert(some(2, "fox", more="some") === "some foxes")
   }
 
   def check(examples: List[(String, String)]) {
     for ((s, p) <- examples) {
-      assert(plural(s) === p)
+      assert(many(s) === p)
     }
   }
 

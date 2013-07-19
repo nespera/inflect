@@ -15,7 +15,7 @@ the resulting library to also be [usable from Java](#java-usage).
 import uk.me.chrs.inflect.Inflect_EN._
 
 //Unconditional plural
-println("I see dead " + plural("person"))
+println("I see dead " + many("person"))
 
 //Conditional plural
 val cakes = 1
@@ -107,7 +107,7 @@ println("Your score is " + uk.me.chrs.inflect.Inflect_EN_US.cardinal(-6007))
 ```java
 static import uk.me.chrs.inflect.Inflect_EN.*;
 
-System.out.println("Here are your " + plural("photo"));
+System.out.println("Here are your " + many("photo"));
 int shocks = 1;
 System.out.println("Applying electrical " + plural(shocks, "stimulus");
 System.out.println("I ate " + count(7, "muffin");

@@ -24,16 +24,16 @@ trait Inflector {
     "fe?" -> "ves",
     "z?z" -> "zzes")
 
-  def plural (singular: String): String = {
+  def many (singular: String): String = {
     val replacements = specialCases ++ rules
     val replace = replacements.find(x => (x._1+"$").r.findFirstIn(singular).isDefined).getOrElse("$" -> "s")
     singular.replaceAll(replace._1+"$", replace._2)
   }
 
-  def pl (singular: String)(count: Long): String = plural(count, singular)
+  def plural (singular: String)(count: Long): String = plural(count, singular)
 
   def plural (count: Long, singular: String): String = {
-    if (count == 1) singular else plural(singular)
+    if (count == 1) singular else many(singular)
   }
 
   def count(number: Long, singular: String) = join("" + number, plural(number, singular))
@@ -44,11 +44,11 @@ trait Inflector {
   def some(singular: String)(number: Long) : String =
     some(number, singular)
 
-  def some(number: Long, singular: String, zero: String = Inflector.defaultZero, lone: String = Inflector.defaultOne, many: String = "") = {
+  def some(number: Long, singular: String, zero: String = Inflector.defaultZero, lone: String = Inflector.defaultOne, more: String = "") = {
     number match {
-      case 0 => join(zero, plural(singular))
+      case 0 => join(zero, many(singular))
       case 1 => if (lone == Inflector.defaultOne) one(singular) else join(lone, singular)
-      case _ => join(many, plural(singular))
+      case _ => join(more, many(singular))
     }
   }
 
