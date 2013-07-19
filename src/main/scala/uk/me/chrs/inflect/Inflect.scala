@@ -30,13 +30,19 @@ trait Inflector {
     singular.replaceAll(replace._1+"$", replace._2)
   }
 
+  def pl (singular: String)(count: Long): String = plural(count, singular)
+
   def plural (count: Long, singular: String): String = {
     if (count == 1) singular else plural(singular)
   }
 
   def count(number: Long, singular: String) = join("" + number, plural(number, singular))
+  def count(singular:String)(number: Long): String = count(number, singular)
 
   def some(number: Long, singular: String): String = some(number, singular, Inflector.defaultZero)
+
+  def some(singular: String)(number: Long) : String =
+    some(number, singular)
 
   def some(number: Long, singular: String, zero: String = Inflector.defaultZero, lone: String = Inflector.defaultOne, many: String = "") = {
     number match {
@@ -45,6 +51,8 @@ trait Inflector {
       case _ => join(many, plural(singular))
     }
   }
+
+  def and(quote: String)(n: Long) = quote
 
   private def join(words: String*) = {
     words.filter(_.nonEmpty).mkString(" ")
@@ -172,46 +180,21 @@ trait Inflector {
 
   def cardinal (number: String): String = cardinal(number.toLong)
 
-  def using(number: Int) = new InflectionBuilder(number, this)
-}
-
-class InflectionBuilder(val number: Int, val inflector: Inflector) {
-
-  var output: String = ""
-
-  def count(singular: String) = {
-    output += inflector.count(number, singular)
-    this
-  }
-
-  def some(singular: String, zero: String = Inflector.defaultZero, lone: String = Inflector.defaultOne, many: String = "") = {
-    output += inflector.some(number, singular, zero, lone, many)
-    this
-  }
-
-  def some(singular: String) = {
-    output += inflector.some(number, singular)
-    this
-  }
-
-  def plural(singular: String) = {
-    output += inflector.plural(number, singular)
-    this
-  }
-
-  def and(text: String) = apply(text)
-
-  def apply(text: String) = {
-    output += text
-    this
-  }
-
-  override def toString: String = output
 }
 
 object Inflector {
   val defaultZero = "no"
   val defaultOne = "a"
+}
+
+object using {
+  def apply(num: Long) = new InflectionBuilder(num)
+}
+
+class InflectionBuilder(num: Long) {
+  def apply(num2Str: (Long => String)*) = {
+    num2Str.foldLeft("")((s,f) => s + f(num))
+  }
 }
 
 class CustomInflector(override val options: Options) extends Inflector
