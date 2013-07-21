@@ -2,6 +2,22 @@ package uk.me.chrs.inflect
 
 trait Inflector {
 
+  object Builder{
+    def count(singular:String)(number: Long): String = Inflector.this.count(number, singular)
+    def plural (singular: String)(count: Long): String = Inflector.this.plural(count, singular)
+    def some(singular: String)(number: Long) : String = Inflector.this.some(number, singular)
+    def q(quote: String)(n: Long) = quote
+
+    def using (num: Long) = new InflectionBuilder(num)
+
+    class InflectionBuilder(num: Long) {
+      def apply(num2Str: (Long => String)*) = {
+        num2Str.foldLeft("")((s,f) => s + f(num))
+      }
+    }
+
+  }
+
   def options: Options = Options()
 
   private def loadSpecialCases: List[(String, String)] = {
@@ -30,17 +46,11 @@ trait Inflector {
     singular.replaceAll(replace._1+"$", replace._2)
   }
 
-  def plural (singular: String)(count: Long): String = plural(count, singular)
-
   def plural (count: Long, singular: String): String = {
     if (count == 1) singular else many(singular)
   }
 
   def count(number: Long, singular: String) = join("" + number, plural(number, singular))
-  def count(singular:String)(number: Long): String = count(number, singular)
-
-  def some(singular: String)(number: Long) : String =
-    some(number, singular)
 
   def some(number: Long, singular: String) = {
     number match {
@@ -49,8 +59,6 @@ trait Inflector {
       case _ => join(options.somePrefix, many(singular))
     }
   }
-
-  def and(quote: String)(n: Long) = quote
 
   private def join(words: String*) = {
     words.filter(_.nonEmpty).mkString(" ")
@@ -178,16 +186,6 @@ trait Inflector {
 
   def cardinal (number: String): String = cardinal(number.toLong)
 
-}
-
-object using {
-  def apply(num: Long) = new InflectionBuilder(num)
-}
-
-class InflectionBuilder(num: Long) {
-  def apply(num2Str: (Long => String)*) = {
-    num2Str.foldLeft("")((s,f) => s + f(num))
-  }
 }
 
 class CustomInflector(override val options: Options) extends Inflector
