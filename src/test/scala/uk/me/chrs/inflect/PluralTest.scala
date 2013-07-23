@@ -95,6 +95,15 @@ class PluralTest extends FunSuite {
     check(examples)
   }
 
+  test("pluralizing verbs") {
+    val examples: List[(String, String)] = List(
+      "is" -> "are",
+      "was" -> "were",
+      "do" -> "do"
+    )
+    check(examples)
+  }
+
   test("conditional plurals") {
     assert(plural(0, "ox") === "oxen")
     assert(plural(1, "ox") === "ox")

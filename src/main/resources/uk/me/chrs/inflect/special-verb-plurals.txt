@@ -1,0 +1,9 @@
+^am,are
+^is,are
+^are,are
+^was,were
+^were,were
+^have,have
+^has,have
+^do,do
+^does,do

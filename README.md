@@ -109,12 +109,12 @@ You will need to import Builder._ from within the given inflector.
 import uk.me.chrs.inflect.Inflect_EN.Builder._
 
 val crowdSize = 1
-println("I see " + using(crowdSize)(count("person"),q(" with "),some("opinion"))
-println("I see " + using(crowdSize+1)(count("person"),q(" with "),some("opinion"))
+println("There " + using(crowdSize)(plural("is"),q(" "),count("person"),q(" with "),some("opinion"))
+println("There " + using(crowdSize+1)(plural("is"),q(" "),count("person"),q(" with "),some("opinion"))
 ```
 
-    I see 1 person with an opinion
-    I see 2 people with opinions
+    There is 1 person with an opinion
+    There are 2 people with opinions
 
 ## Java Usage
 
