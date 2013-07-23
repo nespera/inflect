@@ -1,10 +1,17 @@
 package uk.me.chrs.inflect
 
-class Options(val minusIndicator : String,
-              val andSeparator: String,
-              val nonePrefix: String,
-              val onePrefix: String,
-              val somePrefix: String)
+class Options(minus : String,
+              and: String,
+              none: String,
+              one: String,
+              some: String) {
+
+  val minusIndicator : String = minus
+  val andSeparator: String = and
+  val nonePrefix: String = none
+  val onePrefix: String  = one
+  val somePrefix: String = some
+}
 
 object Options {
 
